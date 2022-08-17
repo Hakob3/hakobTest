@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Images;
 use App\Entity\Record;
 use App\Form\Type\RecordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,15 +38,18 @@ class RecordController extends AbstractController
 
             $recordData = $form->getData();
 
-            $images = $form->get('images')->getData();
-
+            $imagesForm = $form->get('images')->getData();
+//dd($imagesForm);
             $record->setText($recordData->getText());
             $record->setEmail($recordData->getEmail());
             $record->setColor($recordData->getColor());
             $record->setGeometry($recordData->getGeometry());
-            foreach ($images as $image) {
+
+            foreach ($imagesForm as $image) {
                 $newFilename = $fileUploader->upload($image);
-                $record->setImages($newFilename);
+                $images = new Images();
+                $images->setFilepath($newFilename);
+                $record->addImage($images);
             }
             $errors = $validator->validate($record);
             if (count($errors) > 0) {

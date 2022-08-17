@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecordRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,10 +22,6 @@ class Record
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\Column]
-    #[Assert\NotBlank]
-    private array $images = [];
-
     #[ORM\ManyToOne(inversedBy: 'records')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Colors $color = null;
@@ -31,6 +29,14 @@ class Record
     #[ORM\ManyToOne(inversedBy: 'records')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Geometry $geometry = null;
+
+    #[ORM\OneToMany(mappedBy: 'record', targetEntity: Images::class, cascade: ['persist'], orphanRemoval: true)]
+    private Collection $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,18 +67,6 @@ class Record
         return $this;
     }
 
-    public function getImages(): array
-    {
-        return $this->images;
-    }
-
-    public function setImages($images): self
-    {
-        $this->images[] = $images;
-
-        return $this;
-    }
-
     public function getColor(): ?Colors
     {
         return $this->color;
@@ -93,6 +87,36 @@ class Record
     public function setGeometry(?Geometry $geometry): self
     {
         $this->geometry = $geometry;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setRecord($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getRecord() === $this) {
+                $image->setRecord(null);
+            }
+        }
 
         return $this;
     }

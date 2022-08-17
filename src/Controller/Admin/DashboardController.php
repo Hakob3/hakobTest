@@ -29,7 +29,7 @@ class DashboardController extends AbstractDashboardController
                 'id' => $recordRaw->getId(),
                 'text' => $recordRaw->getText(),
                 'email' => $recordRaw->getEmail(),
-                'image' => implode(', ', $recordRaw->getImages()),
+//                'image' => implode(', ', $recordRaw->getImages()->getValues()),
                 'color' => $recordRaw->getColor()->getColor(),
                 'geometry' => $recordRaw->getGeometry()->getGeometry()
             ];
