@@ -1,0 +1,79 @@
+{% extends 'admin/adminLayout.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="example-wrapper">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Records</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Text</th>
+                            <th>Color</th>
+                            <th>Geometry</th>
+                            <th>Images</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for record in records %}
+                            <tr>
+                                <td>
+                                    <a href="record/{{ record.id }}">
+                                        {{ record.id }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="record/{{ record.id }}">
+                                        {{ record.email }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="record/{{ record.id }}">
+                                        {{ record.text }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="record/{{ record.id }}">
+                                        {{ record.color }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="record/{{ record.id }}">
+                                        {{ record.geometry }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="record/{{ record.id }}">
+                                        {{ record.image }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    {% else %}
+        <ul class="nav navbar-nav navbar-right">
+            <NonAmpContent>
+                {% if app.user == null %}
+                    <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
+                {% endif %}
+                <li>
+                    <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                </li>
+            </NonAmpContent>
+        </ul>
+    {% endif %}
+{% endblock %}

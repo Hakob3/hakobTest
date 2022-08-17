@@ -1,0 +1,64 @@
+{% extends 'admin/adminLayout.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="example-wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Record ID {{ record.id }}</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Text</th>
+                            <th>Color</th>
+                            <th>Geometry</th>
+                            <th>Image</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                {{ record.id }}
+                            </td>
+                            <td>
+                                {{ record.email }}
+                            </td>
+                            <td>
+                                {{ record.text }}
+                            </td>
+                            <td>
+                                {{ record.color }}
+                            </td>
+                            <td>
+                                {{ record.geometry }}
+                            </td>
+                            <td>
+                                {{ record.image }}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    {% else %}
+        <ul class="nav navbar-nav navbar-right">
+            <NonAmpContent>
+                {% if app.user == null %}
+                    <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
+                {% endif %}
+                <li>
+                    <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                </li>
+            </NonAmpContent>
+        </ul>
+    {% endif %}
+{% endblock %}
