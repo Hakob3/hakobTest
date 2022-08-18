@@ -42,10 +42,6 @@ class ProductImageManager extends AbstractBaseManager
             return null;
         }
 
-//        $this->filesystemWorker->createNewFolder($productDir);
-
-//        $filename = sprintf('%s_%s.jpg', uniqid(), 'image');
-
         $productImage = new ProductImage();
 
        $productImage->setFilename($productImageFilename);
@@ -61,6 +57,8 @@ class ProductImageManager extends AbstractBaseManager
     {
         $filePath = $productDir . '/' . $productImage->getFilename();
         $this->filesystemWorker->remove($filePath);
+
+        rmdir($productDir);
 
         $product = $productImage->getProduct();
         $product->removeProductImage($productImage);
