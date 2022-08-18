@@ -17,13 +17,7 @@ class ProductImage
     private ?Product $product = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $filenameBig = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $filenameMiddle = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $filenameSmall = null;
+    private ?string $filename = null;
 
     public function getId(): ?int
     {
@@ -42,38 +36,14 @@ class ProductImage
         return $this;
     }
 
-    public function getFilenameBig(): ?string
+    public function getFilename(): ?string
     {
-        return $this->filenameBig;
+        return $this->filename;
     }
 
-    public function setFilenameBig(string $filenameBig): self
+    public function setFilename(string $filename): self
     {
-        $this->filenameBig = $filenameBig;
-
-        return $this;
-    }
-
-    public function getFilenameMiddle(): ?string
-    {
-        return $this->filenameMiddle;
-    }
-
-    public function setFilenameMiddle(string $filenameMiddle): self
-    {
-        $this->filenameMiddle = $filenameMiddle;
-
-        return $this;
-    }
-
-    public function getFilenameSmall(): ?string
-    {
-        return $this->filenameSmall;
-    }
-
-    public function setFilenameSmall(string $filenameSmall): self
-    {
-        $this->filenameSmall = $filenameSmall;
+        $this->filename = $filename;
 
         return $this;
     }

@@ -138,8 +138,8 @@
                 {% for image in images %}
                     <div class="row mt-2">
                         <div class="col-md-5">
-                            <img src="{{ asset('uploads/images/products/' ~ product.id ~ '/' ~ image.filenameMiddle) }}"
-                                 alt="{{ image.filenameMiddle }}">
+                            <img src="{{ asset('uploads/images/products/' ~ product.id ~ '/' ~ image.filename) }}"
+                                 alt="{{ image.filename }}">
                         </div>
                         <div class="col-md-7">
                             <a href="{{ path('admin_product_image_delete', {'id': image.id}) }}"

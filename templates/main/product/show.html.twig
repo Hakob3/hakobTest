@@ -14,7 +14,7 @@
                         <figure class="product-media">
                             {% for image in product.getProductImages().getValues() %}
                                 <img
-                                        src="{{ asset('uploads/images/products/' ~ product.id ~ '/' ~ image.getFilenameBig()) }}"
+                                        src="{{ asset('uploads/images/products/' ~ product.id ~ '/' ~ image.getFilename()) }}"
                                         alt="{{ product.title }}"
                                         class="product-image">
                             {% endfor %}

@@ -2,6 +2,7 @@
 
 namespace App\Utils\File;
 
+use App\Entity\Product;
 use App\Utils\Filesystem\FilesystemWorker;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -9,39 +10,32 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class FileSaver
 {
-    private SluggerInterface $slugger;
-    private string $uploadsTempDir;
-
     /**
      * @var FilesystemWorker
      */
     private FilesystemWorker $filesystemWorker;
+    private string $productImagesDir;
 
-    public function __construct(SluggerInterface $slugger, FilesystemWorker $filesystemWorker, string $uploadsTempDir)
+    public function __construct( FilesystemWorker $filesystemWorker, string $productImagesDir)
     {
-        $this->slugger = $slugger;
-        $this->uploadsTempDir = $uploadsTempDir;
         $this->filesystemWorker = $filesystemWorker;
+        $this->productImagesDir = $productImagesDir;
     }
 
     /**
      * @param UploadedFile $uploadedFile
+     * @param Product $product
+     * @param string $filename
      * @return string|null
      */
-    public function saveUploadedFileIntoTemp(UploadedFile $uploadedFile): ?string
+    public function saveUploadedFileIntoTemp(UploadedFile $uploadedFile, Product $product, string $filename): ?string
     {
-        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $safeFilename = $this->slugger->slug($originalFilename);
+        $this->filesystemWorker->createNewFolder($this->productImagesDir);
 
-        $filename = sprintf('%s-%s.%s', $safeFilename, uniqid(), $uploadedFile->guessClientExtension());
+        $filepath = $this->productImagesDir . '/' . $product->getId();
 
-
-
-
-//        $this->filesystemWorker->createNewFolder($this->uploadsTempDir);
-        dd($this->uploadsTempDir);
         try {
-            $uploadedFile->move($this->uploadsTempDir, $filename);
+            $uploadedFile->move($filepath, $filename);
         } catch (FileException $exception) {
             return null;
         }

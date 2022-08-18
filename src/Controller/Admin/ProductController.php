@@ -44,6 +44,7 @@ class ProductController extends AbstractController
         $form = $this->createForm(EditProductFormType::class, $editProductModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
             $product = $productFormHandler->processEditForm($editProductModel, $form);
 
             $this->addFlash('success', 'Your changes were saved!');

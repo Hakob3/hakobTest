@@ -8,16 +8,19 @@ use App\Utils\File\FileSaver;
 use App\Utils\Manager\ProductManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Form;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProductFormHandler
 {
     private FileSaver $fileSaver;
     private ProductManager $productManager;
+    private SluggerInterface $slugger;
 
-    public function __construct(ProductManager $productManager, FileSaver $fileSaver)
+    public function __construct(SluggerInterface $slugger, ProductManager $productManager, FileSaver $fileSaver)
     {
         $this->fileSaver = $fileSaver;
         $this->productManager = $productManager;
+        $this->slugger = $slugger;
     }
 
     /**
@@ -29,7 +32,7 @@ class ProductFormHandler
     {
         $product = new Product();
 
-        if($editProductModel->id){
+        if ($editProductModel->id) {
             $product = $this->productManager->find($editProductModel->id);
         }
 
@@ -41,15 +44,21 @@ class ProductFormHandler
         $product->setIsDeleted($editProductModel->isDeleted);
         $product->setIsPublished($editProductModel->isPublished);
 
-        $this->productManager->save($product);
+//        $this->productManager->save($product);
 
         $newImageFile = $form->get('newImage')->getData();
 
-        $tempImageFilename = $newImageFile
-            ? $this->fileSaver->saveUploadedFileIntoTemp($newImageFile)
-            : null;
+        if ($newImageFile) {
+            $originalFilename = pathinfo($newImageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeFilename = $this->slugger->slug($originalFilename);
 
-        $this->productManager->updateProductImages($product, $tempImageFilename);
+            $filename = sprintf('%s-%s.%s', $safeFilename, uniqid(), $newImageFile->guessClientExtension());
+
+            $productImageFilename = $this->fileSaver->saveUploadedFileIntoTemp($newImageFile, $product, $filename);
+
+            $this->productManager->updateProductImages($product, $productImageFilename);
+        }
+
 
         $this->productManager->save($product);
 
