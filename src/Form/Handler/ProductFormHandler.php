@@ -44,7 +44,7 @@ class ProductFormHandler
         $product->setIsDeleted($editProductModel->isDeleted);
         $product->setIsPublished($editProductModel->isPublished);
 
-//        $this->productManager->save($product);
+        $this->productManager->save($product);
 
         $newImageFile = $form->get('newImage')->getData();
 

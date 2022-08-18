@@ -35,8 +35,39 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/edit/{id}', name: 'edit')]
     #[Route('/add', name: 'add')]
+    public function add(Request $request, ProductFormHandler $productFormHandler)
+    {
+        $product = new Product();
+
+        $editProductModel = EditProductModel::makeFromProduct($product);
+
+        $form = $this->createForm(EditProductFormType::class, $editProductModel);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $product = $productFormHandler->processEditForm($editProductModel, $form);
+
+            $this->addFlash('success', 'Your changes were saved!');
+
+            return $this->redirectToRoute('admin_product_edit', ['id' => $product->getId()]);
+        }
+
+        if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('warning', 'Something went wrong. Please check your form');
+        }
+
+        $images = $product
+            ? $product->getProductImages()->getValues() : [];
+
+        return $this->renderForm('admin/product/edit.html.twig', [
+            'form' => $form,
+            'product' => $product,
+            'images' => $images
+        ]);
+    }
+
+    #[Route('/edit/{id}', name: 'edit')]
     public function edit(Request $request, ProductFormHandler $productFormHandler, Product $product = null): Response
     {
         $editProductModel = EditProductModel::makeFromProduct($product);

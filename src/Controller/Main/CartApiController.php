@@ -18,7 +18,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartApiController extends AbstractController
 {
     #[Route('/cart', name: 'cart_save', methods: ['POST'])]
-    public function saveCart(Request $request, CartRepository $cartRepository, CartProductRepository $cartProductRepository, ProductRepository $productRepository, EntityManagerInterface $entityManager): Response
+    public function saveCart(
+        Request $request,
+        CartRepository $cartRepository,
+        CartProductRepository $cartProductRepository,
+        ProductRepository $productRepository,
+        EntityManagerInterface $entityManager): Response
     {
         $productId = $request->request->get('productId');
         $phpSessionId = $request->cookies->get('PHPSESSID');
