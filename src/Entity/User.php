@@ -9,13 +9,13 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column()]
+    #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
@@ -30,17 +30,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fullName = null;
 
-//    #[ORM\Column(type: 'boolean')]
-//    private $isVerified = false;
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $phone = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $address = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $zipcode = null;
+
+    #[ORM\Column]
+    private ?bool $isDeleted;
+
+    public function __construct()
+    {
+        $this->isDeleted = false;
+    }
 
     public function getId(): ?int
-    {
-        return $this->id;
-    }
+{
+    return $this->id;
+}
 
     public function getEmail(): ?string
     {
@@ -61,7 +77,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -107,26 +123,75 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-//    public function isVerified(): bool
-//    {
-//        return $this->isVerified;
-//    }
-//
-//    public function setIsVerified(bool $isVerified): self
-//    {
-//        $this->isVerified = $isVerified;
-//
-//        return $this;
-//    }
-
-    public function getName(): ?string
+    public function isVerified(): bool
     {
-        return $this->name;
+        return $this->isVerified;
     }
 
-    public function setName(string $name): self
+    public function setIsVerified(bool $isVerified): self
     {
-        $this->name = $name;
+        $this->isVerified = $isVerified;
+
         return $this;
     }
+
+public function getFullName(): ?string
+{
+    return $this->fullName;
+}
+
+public function setFullName(?string $fullName): self
+{
+    $this->fullName = $fullName;
+
+    return $this;
+}
+
+public function getPhone(): ?string
+{
+    return $this->phone;
+}
+
+public function setPhone(?string $phone): self
+{
+    $this->phone = $phone;
+
+    return $this;
+}
+
+public function getAddress(): ?string
+{
+    return $this->address;
+}
+
+public function setAddress(?string $address): self
+{
+    $this->address = $address;
+
+    return $this;
+}
+
+public function getZipcode(): ?string
+{
+    return $this->zipcode;
+}
+
+public function setZipcode(?string $zipcode): self
+{
+    $this->zipcode = $zipcode;
+
+    return $this;
+}
+
+public function isIsDeleted(): ?bool
+{
+    return $this->isDeleted;
+}
+
+public function setIsDeleted(?bool $isDeleted): self
+{
+    $this->isDeleted = $isDeleted;
+
+    return $this;
+}
 }
