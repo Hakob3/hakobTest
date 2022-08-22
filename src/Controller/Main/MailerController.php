@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,8 +17,8 @@ class MailerController extends AbstractController
     /**
      * @throws TransportExceptionInterface
      */
-    #[Route('/email')]
-    public function sendEmail(MailerInterface $mailer, Request $request): Response
+    #[Route('/email', name: 'send_mail')]
+    public function sendEmail(Request $request): Response
     {
 //        $email = (new Email())
 ////            ->from('baghdasaryan.hakob@mail.ru')
@@ -41,15 +43,29 @@ class MailerController extends AbstractController
 //        }
 
         $email = (new Email())
-//            ->from('hakobApo@yandex.ru')
+            ->from('hakobApo@yandex.ru')
             ->to('baghdasaryan.hakob@mail.ru')
 //            ->replyTo(self::EMAIL_ADMIN_EMAIL_FROM)
-            ->subject('123456')
-            ->html('123');
+            ->subject('ha4834kob')
+            ->html('43243');
 
-        $mailer->send($email);
+        $dsn = $this->getParameter('mailer_dsn');
 
-        return $this->render('mailer/index.html.twig', [
+//        dd($dsn);
+
+        $transport = Transport::fromDsn($dsn);
+
+        $mailer = new Mailer($transport);
+
+        try {
+            $mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            // some error prevented the email sending; display an
+            // error message or try to resend the message
+            echo $e;
+        }
+
+        return $this->render('/main/mailer/index.html.twig', [
             'controller_name' => 'mailer'
         ]);
     }

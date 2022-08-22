@@ -8,6 +8,7 @@ parameters:
     uploads_temp_dir: '%uploads_dir%/temp'
     upload_images_dir: '%uploads_dir%/images'
     product_images_dir: '%upload_images_dir%/products'
+    mailer_dsn: '%env(MAILER_DSN)%'
 services:
     # default configuration for services in *this* file
     _defaults:

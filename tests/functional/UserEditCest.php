@@ -2,12 +2,7 @@
 
 namespace Tests\Functional;
 
-use App\DataFixtures\CategoryFixtures;
-use App\DataFixtures\UserFixtures;
 use App\Tests\FunctionalTester;
-use Codeception\Util\Fixtures;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-
 
 class UserEditCest
 {
