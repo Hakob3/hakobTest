@@ -33,10 +33,10 @@
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                             <div class="form-footer-buttons">
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" id="signIn" class="btn btn-success">
                                     <span>LOG IN</span>
                                 </button>
-                                <a href="{{ path('main_registration') }}" class="btn btn-link btn-dark">
+                                <a id="registration" href="{{ path('main_registration') }}" class="btn btn-link btn-dark">
                                     <i class="fas fa-user"></i>
                                     <span>Create an account</span>
                                 </a>

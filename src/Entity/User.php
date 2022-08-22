@@ -54,9 +54,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     public function getId(): ?int
-{
-    return $this->id;
-}
+    {
+        return $this->id;
+    }
 
     public function getEmail(): ?string
     {
@@ -135,63 +135,63 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-public function getFullName(): ?string
-{
-    return $this->fullName;
-}
+    public function getFullName(): ?string
+    {
+        return $this->fullName;
+    }
 
-public function setFullName(?string $fullName): self
-{
-    $this->fullName = $fullName;
+    public function setFullName(?string $fullName): self
+    {
+        $this->fullName = $fullName;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getPhone(): ?string
-{
-    return $this->phone;
-}
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
 
-public function setPhone(?string $phone): self
-{
-    $this->phone = $phone;
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getAddress(): ?string
-{
-    return $this->address;
-}
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
 
-public function setAddress(?string $address): self
-{
-    $this->address = $address;
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getZipcode(): ?string
-{
-    return $this->zipcode;
-}
+    public function getZipcode(): ?string
+    {
+        return $this->zipcode;
+    }
 
-public function setZipcode(?string $zipcode): self
-{
-    $this->zipcode = $zipcode;
+    public function setZipcode(?string $zipcode): self
+    {
+        $this->zipcode = $zipcode;
 
-    return $this;
-}
+        return $this;
+    }
 
-public function isIsDeleted(): ?bool
-{
-    return $this->isDeleted;
-}
+    public function isIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
 
-public function setIsDeleted(?bool $isDeleted): self
-{
-    $this->isDeleted = $isDeleted;
+    public function setIsDeleted(?bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
-    return $this;
-}
+        return $this;
+    }
 }

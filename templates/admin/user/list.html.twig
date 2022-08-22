@@ -1,0 +1,62 @@
+{% extends 'admin/layout/layout_main.html.twig' %}
+
+{% block title_detailed %}All users{% endblock %}
+
+{% block body %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {% include 'admin/_embed/_card/_header_action.html.twig' with {
+                'sectionTitle': 'Users',
+                'actionUrl': path('admin_user_add')
+            } %}
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="main_table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>Roles</th>
+                        <th>Full name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Zipcode</th>
+                        <th>Is deleted</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                {% for role in user.roles %}
+                                    {{ role }},
+                                {% endfor %}
+                            </td>
+                            <td>{{ user.fullName }}</td>
+                            <td>{{ user.phone }}</td>
+                            <td>{{ user.address }}</td>
+                            <td>{{ user.zipcode }}</td>
+                            <td>
+                                <i class="fas fa-check fa-sm"
+                                   style="color: {% if user.isDeleted %}green{% else %}lightgray{% endif %};"></i>
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_user_edit', {'id': user.id}) }}"
+                                   class="btn btn-outline-info">Edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="navigation">
+                {# {{ knp_pagination_render(pagination) }} #}
+            </div>
+        </div>
+    </div>
+{% endblock %}

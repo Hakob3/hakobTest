@@ -42,7 +42,8 @@ class RegistrationFormType extends AbstractType
                 'label_html' => true,
                 'required' => true,
                 'attr' => [
-                    'class' => 'custom-control-input'
+                    'class' => 'custom-control-input',
+//                    'id' => 'iAgree'
                 ],
                 'label_attr' => [
                     'class' => 'custom-control-label'
