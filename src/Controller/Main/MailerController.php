@@ -47,12 +47,13 @@ class MailerController extends AbstractController
             ->to('baghdasaryan.hakob@mail.ru')
 //            ->replyTo(self::EMAIL_ADMIN_EMAIL_FROM)
             ->subject('ha4834kob')
-            ->html('43243');
+            ->html('894849');
 
         $dsn = $this->getParameter('mailer_dsn');
 
 //        dd($dsn);
 
+//        $dsn = 'MAILER_DSN=smtp://c8c0d791-997d-43e0-872a-e3a63a820efe:dc8b7277-e751-402c-b3ab-6ac9c0c3acf9@app.debugmail.io:25/?verify_peer=0';
         $transport = Transport::fromDsn($dsn);
 
         $mailer = new Mailer($transport);
@@ -62,7 +63,7 @@ class MailerController extends AbstractController
         } catch (TransportExceptionInterface $e) {
             // some error prevented the email sending; display an
             // error message or try to resend the message
-            echo $e;
+            throw $e;
         }
 
         return $this->render('/main/mailer/index.html.twig', [
