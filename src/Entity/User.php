@@ -21,9 +21,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column]
-    private array $roles = [];
-
     /**
      * @var string The hashed password
      */
@@ -31,7 +28,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+    private bool $isVerified = false;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fullName = null;
@@ -47,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private ?bool $isDeleted;
+
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    private ?Roles $roles = null;
 
     public function __construct()
     {
@@ -78,25 +78,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string)$this->email;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
     }
 
     /**
@@ -193,5 +174,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isDeleted = $isDeleted;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles(): array
+    {
+        if ($this->roles != null) {
+            return [$this->roles->getName()];
+        }
+
+        return [];
+    }
+
+    /**
+     * @param Roles|null $roles
+     * @return $this
+     */
+    public function setRoles(?Roles $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+
+    public function getApiRole()
+    {
+        return $this->roles->getDisplayName();
     }
 }

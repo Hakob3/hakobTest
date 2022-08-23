@@ -2,10 +2,11 @@
 
 namespace App\Form\Admin;
 
+use App\Entity\Roles;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -40,14 +41,11 @@ class EditUserFormType extends AbstractType
                     new NotBlank([], 'Should be filled')
                 ]
             ])
-            ->add('roles', ChoiceType::class, [
-                'label' => 'Roles',
-                'choices' => [
-                    'Admin' => 'ROLE_ADMIN',
-                    'User' => 'ROLE_USER',
-                ],
+            ->add('roles', EntityType::class, [
+                'label' => 'Role',
+                'class' => Roles::class,
                 'mapped' => false,
-                'required' => true,
+                'choice_label' => 'displayName',
                 'attr' => [
                     'class' => 'form-control'
                 ],
