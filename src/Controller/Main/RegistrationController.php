@@ -12,8 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\Mailer;
-use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Message;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -41,7 +40,7 @@ class RegistrationController extends AbstractController
      * @throws TransportExceptionInterface
      */
     #[Route('/registration', name: 'main_registration')]
-    public function registration(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function registration(Request $request, MailerInterface $mailer, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('main_profile_index');
@@ -63,18 +62,12 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $dsn = $this->getParameter('mailer_dsn');
-            $transport = Transport::fromDsn($dsn);
-            $mailer = new Mailer($transport);
-
             // generate a signed url and email it to the user
-
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('hakobApo@yandex.ru', 'Mr. Hakob'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-//                    ->html('fwer23qw')
+                    ->from(new Address('hakobapo3@yandex.ru', 'Hakob'))
+                    ->to(new Address($user->getEmail(), 'Apo'))
+                    ->subject('Email verification')
                     ->htmlTemplate('main/email/security/confirmation_email.html.twig'),
                 $mailer
             );
