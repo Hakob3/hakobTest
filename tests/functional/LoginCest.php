@@ -8,18 +8,10 @@ class LoginCest
 {
     public function tryLogin(FunctionalTester $I)
     {
-        $I->amOnPage('/registration');
-        $I->see('Registration Form');
-        $I->fillField('registration_form[email]', 'test@test.com');
-        $I->fillField('registration_form[plainPassword]', 'password');
-        $I->checkOption('#registration_form_agreeTerms');
-        $I->click('#submitReg');
-        $I->see('An email has been sent. Please check your inbox to complete registration.');
-
         $I->amOnPage('/login');
         $I->see('Please Sign In');
-        $I->fillField('email', 'test@test.com');
-        $I->fillField('password', 'password');
+        $I->fillField('email', 'test_admin_1@gmail.com');
+        $I->fillField('password', '123123');
         $I->click('signIn');
         $I->see('Welcome, to your profile!', 'h1');
 

@@ -11,12 +11,13 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
+use function PHPUnit\Framework\returnArgument;
 
 class EmailVerifier
 {
     public function __construct(
         private VerifyEmailHelperInterface $verifyEmailHelper,
-//        private MailerInterface $mailer,
+        private MailerInterface $mailer,
         private EntityManagerInterface $entityManager
     ) {
     }
@@ -25,17 +26,11 @@ class EmailVerifier
      * @param string $verifyEmailRouteName
      * @param UserInterface $user
      * @param TemplatedEmail $email
-     * @param Mailer $mailer
      * @throws TransportExceptionInterface
      */
-    public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, TemplatedEmail $email, Mailer $mailer): void
+    public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, TemplatedEmail $email): void
     {
-        $signatureComponents = $this->verifyEmailHelper->generateSignature(
-            $verifyEmailRouteName,
-            $user->getId(),
-            $user->getEmail(),
-            ['id' => $user->getId()]
-        );
+        $signatureComponents = $this->generateEmailSignature($verifyEmailRouteName, $user);
 
         $context = $email->getContext();
         $context['signedUrl'] = $signatureComponents->getSignedUrl();
@@ -44,19 +39,31 @@ class EmailVerifier
 
         $email->context($context);
 
-        $mailer->send($email);
+        $this->mailer->send($email);
+    }
+
+    public function generateEmailSignature(string $verifyEmailRouteName, UserInterface $user)
+    {
+        return $this->verifyEmailHelper->generateSignature(
+            $verifyEmailRouteName,
+            $user->getId(),
+            $user->getEmail(),
+            ['id' => $user->getId()]
+        );
     }
 
     /**
      * @throws VerifyEmailExceptionInterface
      */
-    public function handleEmailConfirmation(Request $request, UserInterface $user): void
+    public function handleEmailConfirmation(string $requestUri, UserInterface $user): void
     {
-        $this->verifyEmailHelper->validateEmailConfirmation($request->getUri(), $user->getId(), $user->getEmail());
+        $this->verifyEmailHelper->validateEmailConfirmation($requestUri, $user->getId(), $user->getEmail());
 
         $user->setIsVerified(true);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
+
+
 }

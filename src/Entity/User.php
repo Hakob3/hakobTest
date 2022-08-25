@@ -46,6 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?bool $isDeleted;
 
     #[ORM\ManyToOne(inversedBy: 'user')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Roles $roles = null;
 
     public function __construct()

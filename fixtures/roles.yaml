@@ -1,0 +1,7 @@
+App\Entity\Roles:
+  admin:
+    name: ROLE_ADMIN
+    displayName: Admin
+  user:
+    name: ROLE_USER
+    displayName: User

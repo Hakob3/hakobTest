@@ -1,0 +1,13 @@
+App\Entity\User:
+  user_1:
+    email: test_admin_1@gmail.com
+    # password decoded: 123123 | ddd "\" before "$"
+    password: '\$2y\$13\$QVl/pFnZVR7eoAZMJhFaFe5SiLA5MSE2A50xpKvEjF09bfXnQgf9W'
+    isVerified: 1
+    roles: '@admin'
+  user_2:
+    email: test_user_1@gmail.com
+    # password decoded: 123123 | ddd "\" before "$"
+    password: '\$2y\$13\$A.Z/woiZmZCQHevv88FsQ.0LV75iKIigycE2Ll6pKsKg9D2JQAtkG'
+    isVerified: 1
+    roles: '@user'

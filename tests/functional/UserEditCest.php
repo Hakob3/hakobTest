@@ -10,7 +10,7 @@ class UserEditCest
     {
         $I->amOnPage('/admin/login');
         $I->see('Auth Form', 'h1');
-        $I->fillField('email', 'admin@test.com');
+        $I->fillField('email', 'admin@mail.com');
         $I->fillField('password', '123123');
         $I->click('Login');
         $I->see('Dashboard', 'h1');
