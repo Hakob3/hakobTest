@@ -1,11 +1,506 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <body>
-            <trans-unit id="baI_ZxO1" resname="user_signup.heading">
-                <source>user_signup.heading</source>
-                <target>Registration Form</target>
-            </trans-unit>
-        </body>
-    </file>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="messages.en">
+    <unit id="wGv5ZwF" name="Enter your password">
+      <segment>
+        <source>Enter your password</source>
+        <target>Enter your password</target>
+      </segment>
+    </unit>
+    <unit id="Fe2zEyl" name="Please enter your email">
+      <segment>
+        <source>Please enter your email</source>
+        <target>Please enter your email</target>
+      </segment>
+    </unit>
+    <unit id="KDf2_hy" name="Enter your email">
+      <segment>
+        <source>Enter your email</source>
+        <target>Enter your email</target>
+      </segment>
+    </unit>
+    <unit id="rgR_DfT" name="label.agree_terms">
+      <segment>
+        <source>label.agree_terms</source>
+        <target><![CDATA[I agree to the <a href="#">privacy policy</a>]]></target>
+      </segment>
+    </unit>
+    <unit id="cQTa6mh" name="sign_up">
+      <segment>
+        <source>sign_up</source>
+        <target>Sign up</target>
+      </segment>
+    </unit>
+    <unit id="_xKRazV" name="sign_up_rankedchoice">
+      <segment>
+        <source>sign_up_rankedchoice</source>
+        <target>Sign Up - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="d8i346D" name="user_signin.heading">
+      <segment>
+        <source>user_signin.heading</source>
+        <target>Please Sign In</target>
+      </segment>
+    </unit>
+    <unit id="g8hJY.0" name="login.email">
+      <segment>
+        <source>login.email</source>
+        <target>Username or email address *</target>
+      </segment>
+    </unit>
+    <unit id="guXTUCg" name="login.password">
+      <segment>
+        <source>login.password</source>
+        <target>Password</target>
+      </segment>
+    </unit>
+    <unit id="Kd99AFq" name="login.title">
+      <segment>
+        <source>login.title</source>
+        <target>Log In - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="huSwyQL" name="login.remember_me">
+      <segment>
+        <source>login.remember_me</source>
+        <target>Remember me</target>
+      </segment>
+    </unit>
+    <unit id="DBucN94" name="login.signin">
+      <segment>
+        <source>login.signin</source>
+        <target>LOGIN</target>
+      </segment>
+    </unit>
+    <unit id="hxIB06U" name="login.registration">
+      <segment>
+        <source>login.registration</source>
+        <target>Create an account</target>
+      </segment>
+    </unit>
+    <unit id="NkrCmnu" name="login.reset_password">
+      <segment>
+        <source>login.reset_password</source>
+        <target>Or reset your password</target>
+      </segment>
+    </unit>
+    <unit id="Prh0ugF" name="jeans">
+      <segment>
+        <source>jeans</source>
+        <target>Jeans</target>
+      </segment>
+    </unit>
+    <unit id="nd.xWhH" name="hats">
+      <segment>
+        <source>hats</source>
+        <target>Hats</target>
+      </segment>
+    </unit>
+    <unit id="OLHtEsU" name="jackets">
+      <segment>
+        <source>jackets</source>
+        <target>Jackets</target>
+      </segment>
+    </unit>
+    <unit id="v5dfXbc" name="dresses">
+      <segment>
+        <source>dresses</source>
+        <target>Dresses</target>
+      </segment>
+    </unit>
+    <unit id="xzwkOWV" name="sneakers">
+      <segment>
+        <source>sneakers</source>
+        <target>Sneakers</target>
+      </segment>
+    </unit>
+    <unit id="QoghNQ6" name="login">
+      <segment>
+        <source>login</source>
+        <target>LOGIN</target>
+      </segment>
+    </unit>
+    <unit id="HELdwCh" name="cart">
+      <segment>
+        <source>cart</source>
+        <target>Cart</target>
+      </segment>
+    </unit>
+    <unit id="0KSSRK6" name="footer.useful_links">
+      <segment>
+        <source>footer.useful_links</source>
+        <target>Useful links</target>
+      </segment>
+    </unit>
+    <unit id="wfN9Kc1" name="footer.homepage">
+      <segment>
+        <source>footer.homepage</source>
+        <target>Homepage</target>
+      </segment>
+    </unit>
+    <unit id="ZVJTj_b" name="footer.sign_up">
+      <segment>
+        <source>footer.sign_up</source>
+        <target>Sign up</target>
+      </segment>
+    </unit>
+    <unit id="NPuOkxI" name="footer.my_account">
+      <segment>
+        <source>footer.my_account</source>
+        <target>My account</target>
+      </segment>
+    </unit>
+    <unit id="LTgLxEH" name="footer.sign_in">
+      <segment>
+        <source>footer.sign_in</source>
+        <target>Sign in</target>
+      </segment>
+    </unit>
+    <unit id="mzPjHOJ" name="footer.view_cart">
+      <segment>
+        <source>footer.view_cart</source>
+        <target>View cart</target>
+      </segment>
+    </unit>
+    <unit id="HqC8jIv" name="footer.my_profile">
+      <segment>
+        <source>footer.my_profile</source>
+        <target>My profile</target>
+      </segment>
+    </unit>
+    <unit id="qmV49TC" name="footer.change_language">
+      <segment>
+        <source>footer.change_language</source>
+        <target>Change language</target>
+      </segment>
+    </unit>
+    <unit id="GceQhC6" name="footer.copyright">
+      <segment>
+        <source>footer.copyright</source>
+        <target>Copyright © RankedChoice Team. All Rights Reserved.</target>
+      </segment>
+    </unit>
+    <unit id="5wQegam" name="recomended_heading">
+      <segment>
+        <source>recomended_heading</source>
+        <target>We recommended</target>
+      </segment>
+    </unit>
+    <unit id="b6eZe4Q" name="add_to_cart">
+      <segment>
+        <source>add_to_cart</source>
+        <target>add_to_cart</target>
+      </segment>
+    </unit>
+    <unit id="uYb_8LZ" name="Sneakers">
+      <segment>
+        <source>Sneakers</source>
+        <target>Sneakers</target>
+      </segment>
+    </unit>
+    <unit id="Et8FgaK" name="test product">
+      <segment>
+        <source>test product</source>
+        <target>test product</target>
+      </segment>
+    </unit>
+    <unit id="EU0RiT6" name="cart.title">
+      <segment>
+        <source>cart.title</source>
+        <target>Your cart - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="MnbDJs4" name="cart.your_cart">
+      <segment>
+        <source>cart.your_cart</source>
+        <target>Your cart:</target>
+      </segment>
+    </unit>
+    <unit id="RoCT1_f" name="cart.empty">
+      <segment>
+        <source>cart.empty</source>
+        <target>Your cart is empty</target>
+      </segment>
+    </unit>
+    <unit id="NKpUSVZ" name="cart.product">
+      <segment>
+        <source>cart.product</source>
+        <target>Product</target>
+      </segment>
+    </unit>
+    <unit id="TfEGkQ8" name="cart.price">
+      <segment>
+        <source>cart.price</source>
+        <target>Price</target>
+      </segment>
+    </unit>
+    <unit id="6tg59Xv" name="cart.quantity">
+      <segment>
+        <source>cart.quantity</source>
+        <target>Quantity</target>
+      </segment>
+    </unit>
+    <unit id="B3XnusQ" name="cart.total">
+      <segment>
+        <source>cart.total</source>
+        <target>Total</target>
+      </segment>
+    </unit>
+    <unit id="Fng1IV0" name="cart.total_ammount">
+      <segment>
+        <source>cart.total_ammount</source>
+        <target>Total</target>
+      </segment>
+    </unit>
+    <unit id="mXgcRUg" name="cart.make_order">
+      <segment>
+        <source>cart.make_order</source>
+        <target>Make order</target>
+      </segment>
+    </unit>
+    <unit id="qWvM_SM" name="reset_password.title">
+      <segment>
+        <source>reset_password.title</source>
+        <target>Reset your password</target>
+      </segment>
+    </unit>
+    <unit id="XWf8woZ" name="reset_password.heading">
+      <segment>
+        <source>reset_password.heading</source>
+        <target>Reset your password</target>
+      </segment>
+    </unit>
+    <unit id="lpzL089" name="Email">
+      <segment>
+        <source>Email</source>
+        <target>E-mail</target>
+      </segment>
+    </unit>
+    <unit id="D_q6U3F" name="reset_password.desc">
+      <segment>
+        <source>reset_password.desc</source>
+        <target>Enter your email address and we will send you a link to reset your password.</target>
+      </segment>
+    </unit>
+    <unit id="mvz3z1i" name="reset_password.send">
+      <segment>
+        <source>reset_password.send</source>
+        <target>Send</target>
+      </segment>
+    </unit>
+    <unit id="Wk5RPqZ" name="check_email.email_sent">
+      <segment>
+        <source>check_email.email_sent</source>
+        <target>Password Reset Email Sent</target>
+      </segment>
+    </unit>
+    <unit id="CGP62DA" name="check_email.desc">
+      <segment>
+        <source>check_email.desc</source>
+        <target>  If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password. This link will expire in</target>
+      </segment>
+    </unit>
+    <unit id="LFX36ut" name="check_email.try_again">
+      <segment>
+        <source>check_email.try_again</source>
+        <target><![CDATA[If you don't receive an email please check your spam folder or <a
+                                    href="%path%" class="font-weight-bolder">try
+                                again</a>]]></target>
+      </segment>
+    </unit>
+    <unit id="G2mhn_2" name="reset.title">
+      <segment>
+        <source>reset.title</source>
+        <target>Reset your password</target>
+      </segment>
+    </unit>
+    <unit id="e1HesqI" name="reset.heading">
+      <segment>
+        <source>reset.heading</source>
+        <target>Reset your password</target>
+      </segment>
+    </unit>
+    <unit id="iiWFLaI" name="label.new_password">
+      <segment>
+        <source>label.new_password</source>
+        <target>New password</target>
+      </segment>
+    </unit>
+    <unit id="rU9cSfq" name="label.repeat_password">
+      <segment>
+        <source>label.repeat_password</source>
+        <target>Repeat password</target>
+      </segment>
+    </unit>
+    <unit id="qbt.84Y" name="reset.button">
+      <segment>
+        <source>reset.button</source>
+        <target>Reset password</target>
+      </segment>
+    </unit>
+    <unit id="1_wnK76" name="profile.title">
+      <segment>
+        <source>profile.title</source>
+        <target>My profile - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="RRLlKO8" name="profile.heading">
+      <segment>
+        <source>profile.heading</source>
+        <target>Welcome, to your profile!</target>
+      </segment>
+    </unit>
+    <unit id="qNtbIJ8" name="profile.your_email">
+      <segment>
+        <source>profile.your_email</source>
+        <target>Your email:</target>
+      </segment>
+    </unit>
+    <unit id="kadlm2X" name="profile.your_full_name">
+      <segment>
+        <source>profile.your_full_name</source>
+        <target>Your full name:</target>
+      </segment>
+    </unit>
+    <unit id="LMj7HEq" name="profile.your_phone">
+      <segment>
+        <source>profile.your_phone</source>
+        <target>Your phone:</target>
+      </segment>
+    </unit>
+    <unit id="wnzJ2jJ" name="profile.your_address">
+      <segment>
+        <source>profile.your_address</source>
+        <target>Your address:</target>
+      </segment>
+    </unit>
+    <unit id="ECEpeOO" name="profile.your_zipcode">
+      <segment>
+        <source>profile.your_zipcode</source>
+        <target>Your zipcode:</target>
+      </segment>
+    </unit>
+    <unit id="kI3W9Mm" name="profile.desc">
+      <segment>
+        <source>profile.desc</source>
+        <target>Please, before you make some order fill your full information.</target>
+      </segment>
+    </unit>
+    <unit id="Wtjq5Gp" name="profile.edit">
+      <segment>
+        <source>profile.edit</source>
+        <target>EDIT PROFILE INFO</target>
+      </segment>
+    </unit>
+    <unit id="_q.kCgd" name="profile.logout">
+      <segment>
+        <source>profile.logout</source>
+        <target>LOGOUT</target>
+      </segment>
+    </unit>
+    <unit id="e2rD2yc" name="edit_profile.title">
+      <segment>
+        <source>edit_profile.title</source>
+        <target>Edit my profile - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="1OZkQSX" name="edit_profile.heading">
+      <segment>
+        <source>edit_profile.heading</source>
+        <target>Edit your profile</target>
+      </segment>
+    </unit>
+    <unit id="tafXzDU" name="edit_profile.save_changes">
+      <segment>
+        <source>edit_profile.save_changes</source>
+        <target>SAVE CHANGES</target>
+      </segment>
+    </unit>
+    <unit id="yCXDRmW" name="label.edit_profile_fullname">
+      <segment>
+        <source>label.edit_profile_fullname</source>
+        <target>Enter your full name</target>
+      </segment>
+    </unit>
+    <unit id="EJ7KP_M" name="label.edit_profile_phone">
+      <segment>
+        <source>label.edit_profile_phone</source>
+        <target>Enter your phone</target>
+      </segment>
+    </unit>
+    <unit id="krv1SEU" name="label.edit_profile_address">
+      <segment>
+        <source>label.edit_profile_address</source>
+        <target>Enter your address</target>
+      </segment>
+    </unit>
+    <unit id="VVz.aTs" name="label.edit_profile_zipcode">
+      <segment>
+        <source>label.edit_profile_zipcode</source>
+        <target>Enter your zipcode</target>
+      </segment>
+    </unit>
+    <unit id="Xfxpsih" name="main.homepage">
+      <segment>
+        <source>main.homepage</source>
+        <target>Homepage - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="lS4tVo." name="main_keywords.jeans_jackets">
+      <segment>
+        <source>main_keywords.jeans_jackets</source>
+        <target>Jeans, Jackets</target>
+      </segment>
+    </unit>
+    <unit id="7T1c89a" name="main_page.desc">
+      <segment>
+        <source>main_page.desc</source>
+        <target>Main page of RankedChoice shop!</target>
+      </segment>
+    </unit>
+    <unit id="_SzE9f9" name="main.new_collection">
+      <segment>
+        <source>main.new_collection</source>
+        <target>New Collection!</target>
+      </segment>
+    </unit>
+    <unit id="xnGqUu3" name="main.show_me">
+      <segment>
+        <source>main.show_me</source>
+        <target>Show me
+</target>
+      </segment>
+    </unit>
+    <unit id="HfA3baC" name="main.discounts_over">
+      <segment>
+        <source>main.discounts_over</source>
+        <target>Discounts Over</target>
+      </segment>
+    </unit>
+    <unit id="nXOylpN" name="main.unique">
+      <segment>
+        <source>main.unique</source>
+        <target>Unique!</target>
+      </segment>
+    </unit>
+    <unit id="I1dN9Qr" name="main_fashionable">
+      <segment>
+        <source>main_fashionable</source>
+        <target>Fashionable!</target>
+      </segment>
+    </unit>
+    <unit id="55dobHW" name="main_branded">
+      <segment>
+        <source>main_branded</source>
+        <target>Branded!</target>
+      </segment>
+    </unit>
+    <unit id="sMIMdUS" name="user_signup.heading">
+      <segment>
+        <source>user_signup.heading</source>
+        <target>Registration form</target>
+      </segment>
+    </unit>
+  </file>
 </xliff>

@@ -57,6 +57,7 @@ security:
          - { path: ^/admin/login}
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
+#         - { path: ^/%app_locales.in_breakets%/profile, roles: ROLE_USER }
 #         - { path: ^/admin, roles: ROLE_ADMIN }
 
 when@test:

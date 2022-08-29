@@ -34,14 +34,14 @@ class ChangePasswordFormType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
-                    'label' => 'New password',
+                    'label' => 'label.new_password',
                 ],
                 'second_options' => [
                     'attr' => [
                         'autocomplete' => 'new-password',
                         'class' => 'form-control mb-2'
                     ],
-                    'label' => 'Repeat Password',
+                    'label' => 'label.repeat_password',
                 ],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,

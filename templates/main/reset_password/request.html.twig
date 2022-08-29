@@ -1,6 +1,6 @@
 {% extends 'main/base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}{{ 'reset_password.title'|trans }}{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('reset_password_error') %}
@@ -12,7 +12,7 @@
                 <div class="col-lg-12">
                     <div class="page-details page-login mt-4">
                         <h1 class="h3 mb-3 font-weight-normal title-gradient-1">
-                            Reset your password
+                            {{ 'reset_password.heading'|trans }}
                         </h1>
                         {{ form_start(requestForm) }}
                         <div class="form-group">
@@ -22,13 +22,12 @@
                         </div>
                         <div class="form-group">
                             <small>
-                                Enter your email address and we will send you a
-                                link to reset your password.
+                                {{ 'reset_password.desc'|trans }}
                             </small>
                         </div>
                         <div class="col-lg-12">
                             <button type="submit" id="passwordResetRequest" class="btn btn-success">
-                                Send password reset email
+                                {{ 'reset_password.send'|trans }}
                             </button>
                         </div>
                         {{ form_end(requestForm) }}

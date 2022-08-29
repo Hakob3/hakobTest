@@ -1,7 +1,7 @@
 {% for label, messages in app.flashes(['success', 'warning', 'info']) %}
     {% for message in messages %}
         <div class="alert alert-{{ label }} text-center">
-            {{ message }}
+            {{ message|trans({'%name%': message})|raw }}
         </div>
     {% endfor %}
 {% endfor %}

@@ -1,11 +1,540 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-    <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
-        <body>
-            <trans-unit id="baI_ZxO2" resname="user_signup.heading">
-                <source>user_signup.heading</source>
-                <target>Форма регистрации</target>
-            </trans-unit>
-        </body>
-    </file>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="ru">
+  <file id="messages.ru">
+    <unit id="KDf2_hy" name="Enter your email">
+      <segment>
+        <source>Enter your email</source>
+        <target>Введите ваш e-mail</target>
+      </segment>
+    </unit>
+    <unit id="wGv5ZwF" name="Enter your password">
+      <segment>
+        <source>Enter your password</source>
+        <target>Введите ваш пароль</target>
+      </segment>
+    </unit>
+    <unit id="Fe2zEyl" name="Please enter your email">
+      <segment>
+        <source>Please enter your email</source>
+        <target>Пожалуйста, введите адрес e-mail</target>
+      </segment>
+    </unit>
+    <unit id="rgR_DfT" name="label.agree_terms">
+      <segment>
+        <source>label.agree_terms</source>
+        <target><![CDATA[Я согласен с <a href="#">политикой конфиденциальности</a>]]></target>
+      </segment>
+    </unit>
+    <unit id="cQTa6mh" name="sign_up">
+      <segment>
+        <source>sign_up</source>
+        <target>Зарегистрироваться</target>
+      </segment>
+    </unit>
+    <unit id="_xKRazV" name="sign_up_rankedchoice">
+      <segment>
+        <source>sign_up_rankedchoice</source>
+        <target>Зарегистрироваться на - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="d8i346D" name="user_signin.heading">
+      <segment>
+        <source>user_signin.heading</source>
+        <target>Пожалуйста войдите</target>
+      </segment>
+    </unit>
+    <unit id="g8hJY.0" name="login.email">
+      <segment>
+        <source>login.email</source>
+        <target>Имя пользователя или адрес e-mail *</target>
+      </segment>
+    </unit>
+    <unit id="guXTUCg" name="login.password">
+      <segment>
+        <source>login.password</source>
+        <target>Пароль</target>
+      </segment>
+    </unit>
+    <unit id="Kd99AFq" name="login.title">
+      <segment>
+        <source>login.title</source>
+        <target>Войти в - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="huSwyQL" name="login.remember_me">
+      <segment>
+        <source>login.remember_me</source>
+        <target>Запомни меня</target>
+      </segment>
+    </unit>
+    <unit id="DBucN94" name="login.signin">
+      <segment>
+        <source>login.signin</source>
+        <target>Вход</target>
+      </segment>
+    </unit>
+    <unit id="hxIB06U" name="login.registration">
+      <segment>
+        <source>login.registration</source>
+        <target>Создать учетную запись</target>
+      </segment>
+    </unit>
+    <unit id="NkrCmnu" name="login.reset_password">
+      <segment>
+        <source>login.reset_password</source>
+        <target>Или сбросьте свой пароль</target>
+      </segment>
+    </unit>
+    <unit id="Prh0ugF" name="jeans">
+      <segment>
+        <source>jeans</source>
+        <target>Джинсы</target>
+      </segment>
+    </unit>
+    <unit id="nd.xWhH" name="hats">
+      <segment>
+        <source>hats</source>
+        <target>Головные уборы</target>
+      </segment>
+    </unit>
+    <unit id="OLHtEsU" name="jackets">
+      <segment>
+        <source>jackets</source>
+        <target>Куртки</target>
+      </segment>
+    </unit>
+    <unit id="v5dfXbc" name="dresses">
+      <segment>
+        <source>dresses</source>
+        <target>Одежда</target>
+      </segment>
+    </unit>
+    <unit id="xzwkOWV" name="sneakers">
+      <segment>
+        <source>sneakers</source>
+        <target>Кроссовки</target>
+      </segment>
+    </unit>
+    <unit id="QoghNQ6" name="login">
+      <segment>
+        <source>login</source>
+        <target>ВОЙТИ</target>
+      </segment>
+    </unit>
+    <unit id="HELdwCh" name="cart">
+      <segment>
+        <source>cart</source>
+        <target>КОРЗИНА</target>
+      </segment>
+    </unit>
+    <unit id="0KSSRK6" name="footer.useful_links">
+      <segment>
+        <source>footer.useful_links</source>
+        <target>Полезные ссылки</target>
+      </segment>
+    </unit>
+    <unit id="wfN9Kc1" name="footer.homepage">
+      <segment>
+        <source>footer.homepage</source>
+        <target>Домашняя страница</target>
+      </segment>
+    </unit>
+    <unit id="ZVJTj_b" name="footer.sign_up">
+      <segment>
+        <source>footer.sign_up</source>
+        <target>Зарегистрироваться</target>
+      </segment>
+    </unit>
+    <unit id="NPuOkxI" name="footer.my_account">
+      <segment>
+        <source>footer.my_account</source>
+        <target>Мой аккаунт</target>
+      </segment>
+    </unit>
+    <unit id="LTgLxEH" name="footer.sign_in">
+      <segment>
+        <source>footer.sign_in</source>
+        <target>Войти</target>
+      </segment>
+    </unit>
+    <unit id="mzPjHOJ" name="footer.view_cart">
+      <segment>
+        <source>footer.view_cart</source>
+        <target>Показать корзину</target>
+      </segment>
+    </unit>
+    <unit id="HqC8jIv" name="footer.my_profile">
+      <segment>
+        <source>footer.my_profile</source>
+        <target>Мой профиль</target>
+      </segment>
+    </unit>
+    <unit id="qmV49TC" name="footer.change_language">
+      <segment>
+        <source>footer.change_language</source>
+        <target>Сменить язык</target>
+      </segment>
+    </unit>
+    <unit id="GceQhC6" name="footer.copyright">
+      <segment>
+        <source>footer.copyright</source>
+        <target>Copyright © Ranked Choice Team. Все права защищены.</target>
+      </segment>
+    </unit>
+    <unit id="5wQegam" name="recomended_heading">
+      <segment>
+        <source>recomended_heading</source>
+        <target>Рекомендуем</target>
+      </segment>
+    </unit>
+    <unit id="b6eZe4Q" name="add_to_cart">
+      <segment>
+        <source>add_to_cart</source>
+        <target>добавить в корзину</target>
+      </segment>
+    </unit>
+    <unit id="uYb_8LZ" name="Sneakers">
+      <segment>
+        <source>Sneakers</source>
+        <target>Кроссовки</target>
+      </segment>
+    </unit>
+    <unit id="Et8FgaK" name="test product">
+      <segment>
+        <source>test product</source>
+        <target>тестовый продукт</target>
+      </segment>
+    </unit>
+    <unit id="EU0RiT6" name="cart.title">
+      <segment>
+        <source>cart.title</source>
+        <target>Ваша корзина - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="MnbDJs4" name="cart.your_cart">
+      <segment>
+        <source>cart.your_cart</source>
+        <target>Ваша корзина</target>
+      </segment>
+    </unit>
+    <unit id="RoCT1_f" name="cart.empty">
+      <segment>
+        <source>cart.empty</source>
+        <target>Ваша корзина пуста</target>
+      </segment>
+    </unit>
+    <unit id="NKpUSVZ" name="cart.product">
+      <segment>
+        <source>cart.product</source>
+        <target>Товар</target>
+      </segment>
+    </unit>
+    <unit id="TfEGkQ8" name="cart.price">
+      <segment>
+        <source>cart.price</source>
+        <target>Цена</target>
+      </segment>
+    </unit>
+    <unit id="6tg59Xv" name="cart.quantity">
+      <segment>
+        <source>cart.quantity</source>
+        <target>Количество</target>
+      </segment>
+    </unit>
+    <unit id="B3XnusQ" name="cart.total">
+      <segment>
+        <source>cart.total</source>
+        <target>Общая стоимость</target>
+      </segment>
+    </unit>
+    <unit id="Fng1IV0" name="cart.total_ammount">
+      <segment>
+        <source>cart.total_ammount</source>
+        <target>Общая стоимость корзины</target>
+      </segment>
+    </unit>
+    <unit id="mXgcRUg" name="cart.make_order">
+      <segment>
+        <source>cart.make_order</source>
+        <target>Сделать заказ</target>
+      </segment>
+    </unit>
+    <unit id="qWvM_SM" name="reset_password.title">
+      <segment>
+        <source>reset_password.title</source>
+        <target>Сбросьте свой пароль</target>
+      </segment>
+    </unit>
+    <unit id="XWf8woZ" name="reset_password.heading">
+      <segment>
+        <source>reset_password.heading</source>
+        <target>Сбросьте свой пароль</target>
+      </segment>
+    </unit>
+    <unit id="lpzL089" name="Email">
+      <segment>
+        <source>Email</source>
+        <target>E-mail</target>
+      </segment>
+    </unit>
+    <unit id="D_q6U3F" name="reset_password.desc">
+      <segment>
+        <source>reset_password.desc</source>
+        <target>Введите свой адрес электронной почты, и мы вышлем вам ссылку для сброса пароля.</target>
+      </segment>
+    </unit>
+    <unit id="mvz3z1i" name="reset_password.send">
+      <segment>
+        <source>reset_password.send</source>
+        <target>Отправить</target>
+      </segment>
+    </unit>
+    <unit id="Wk5RPqZ" name="check_email.email_sent">
+      <segment>
+        <source>check_email.email_sent</source>
+        <target>Электронное письмо для сброса пароля отправлено</target>
+      </segment>
+    </unit>
+    <unit id="CGP62DA" name="check_email.desc">
+      <segment>
+        <source>check_email.desc</source>
+        <target>Если учетная запись, соответствующая вашему адресу электронной почты, существует, значит, только что было отправлено электронное письмо, содержащее ссылку, которую вы можете использовать для сброса пароля. Эта ссылка истечет через</target>
+      </segment>
+    </unit>
+    <unit id="LFX36ut" name="check_email.try_again">
+      <segment>
+        <source>check_email.try_again</source>
+        <target><![CDATA[Если вы не получили письмо, проверьте папку со спамом или <a
+                                    href="%path%" class="font-weight-bolder">повторите попытку</a>]]></target>
+      </segment>
+    </unit>
+    <unit id="vN4SXKk" name="An email has been sent. Please check your inbox to complete registration.">
+      <segment>
+        <source>An email has been sent. Please check your inbox to complete registration.</source>
+        <target>Электронное письмо было отправлено. Пожалуйста, проверьте свой почтовый ящик, чтобы завершить регистрацию.</target>
+      </segment>
+    </unit>
+    <unit id="kQWnsB7" name="Your email address has been verified.">
+      <segment>
+        <source>Your email address has been verified.</source>
+        <target>Ваш адрес электронной почты подтвержден.</target>
+      </segment>
+    </unit>
+    <unit id="G2mhn_2" name="reset.title">
+      <segment>
+        <source>reset.title</source>
+        <target>reset.title</target>
+      </segment>
+    </unit>
+    <unit id="e1HesqI" name="reset.heading">
+      <segment>
+        <source>reset.heading</source>
+        <target>Сбросить пароль</target>
+      </segment>
+    </unit>
+    <unit id="iiWFLaI" name="label.new_password">
+      <segment>
+        <source>label.new_password</source>
+        <target>Новый пароль</target>
+      </segment>
+    </unit>
+    <unit id="rU9cSfq" name="label.repeat_password">
+      <segment>
+        <source>label.repeat_password</source>
+        <target>Повторите пароль</target>
+      </segment>
+    </unit>
+    <unit id="qbt.84Y" name="reset.button">
+      <segment>
+        <source>reset.button</source>
+        <target>Сбросить пароль</target>
+      </segment>
+    </unit>
+    <unit id="1_wnK76" name="profile.title">
+      <segment>
+        <source>profile.title</source>
+        <target>Мой профиль - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="RRLlKO8" name="profile.heading">
+      <segment>
+        <source>profile.heading</source>
+        <target>Добро пожаловать в ваш профиль!</target>
+      </segment>
+    </unit>
+    <unit id="qNtbIJ8" name="profile.your_email">
+      <segment>
+        <source>profile.your_email</source>
+        <target>Ваш e-mail:</target>
+      </segment>
+    </unit>
+    <unit id="kadlm2X" name="profile.your_full_name">
+      <segment>
+        <source>profile.your_full_name</source>
+        <target>Ваше полное имя:</target>
+      </segment>
+    </unit>
+    <unit id="LMj7HEq" name="profile.your_phone">
+      <segment>
+        <source>profile.your_phone</source>
+        <target>Ваш телефон:</target>
+      </segment>
+    </unit>
+    <unit id="wnzJ2jJ" name="profile.your_address">
+      <segment>
+        <source>profile.your_address</source>
+        <target>Ваш адрес:</target>
+      </segment>
+    </unit>
+    <unit id="ECEpeOO" name="profile.your_zipcode">
+      <segment>
+        <source>profile.your_zipcode</source>
+        <target>Ваш почтовый индекс:</target>
+      </segment>
+    </unit>
+    <unit id="kI3W9Mm" name="profile.desc">
+      <segment>
+        <source>profile.desc</source>
+        <target>Пожалуйста, прежде чем сделать заказ, заполните полную информацию.</target>
+      </segment>
+    </unit>
+    <unit id="Wtjq5Gp" name="profile.edit">
+      <segment>
+        <source>profile.edit</source>
+        <target>РЕДАКТИРОВАТЬ ИНФОРМАЦИЮ О ПРОФИЛЕ</target>
+      </segment>
+    </unit>
+    <unit id="_q.kCgd" name="profile.logout">
+      <segment>
+        <source>profile.logout</source>
+        <target>ВЫЙТИ</target>
+      </segment>
+    </unit>
+    <unit id="e2rD2yc" name="edit_profile.title">
+      <segment>
+        <source>edit_profile.title</source>
+        <target>Редактировать мой профиль - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="1OZkQSX" name="edit_profile.heading">
+      <segment>
+        <source>edit_profile.heading</source>
+        <target>Редактировать профиль</target>
+      </segment>
+    </unit>
+    <unit id="yCXDRmW" name="label.edit_profile_fullname">
+      <segment>
+        <source>label.edit_profile_fullname</source>
+        <target>Введите свое полное имя</target>
+      </segment>
+    </unit>
+    <unit id="EJ7KP_M" name="label.edit_profile_phone">
+      <segment>
+        <source>label.edit_profile_phone</source>
+        <target>Введите свой номер телефона</target>
+      </segment>
+    </unit>
+    <unit id="krv1SEU" name="label.edit_profile_address">
+      <segment>
+        <source>label.edit_profile_address</source>
+        <target>Введите свой адрес</target>
+      </segment>
+    </unit>
+    <unit id="VVz.aTs" name="label.edit_profile_zipcode">
+      <segment>
+        <source>label.edit_profile_zipcode</source>
+        <target>Введите свой почтовый индекс</target>
+      </segment>
+    </unit>
+    <unit id="tafXzDU" name="edit_profile.save_changes">
+      <segment>
+        <source>edit_profile.save_changes</source>
+        <target>СОХРАНИТЬ ИЗМЕНЕНИЯ</target>
+      </segment>
+    </unit>
+    <unit id="sMIMdUS" name="user_signup.heading">
+      <segment>
+        <source>user_signup.heading</source>
+        <target>Форма регистрации</target>
+      </segment>
+    </unit>
+    <unit id="4HR2PLN" name="Jeans">
+      <segment>
+        <source>Jeans</source>
+        <target>Джинсы</target>
+      </segment>
+    </unit>
+    <unit id="AKU1Zws" name="Hats">
+      <segment>
+        <source>Hats</source>
+        <target>Головные уборы</target>
+      </segment>
+    </unit>
+    <unit id="6aJY4I9" name="Jackets">
+      <segment>
+        <source>Jackets</source>
+        <target>Куртки</target>
+      </segment>
+    </unit>
+    <unit id="7yxMZW3" name="Dresses">
+      <segment>
+        <source>Dresses</source>
+        <target>Одежда</target>
+      </segment>
+    </unit>
+    <unit id="Xfxpsih" name="main.homepage">
+      <segment>
+        <source>main.homepage</source>
+        <target>Домашняя страница - RankedChoice</target>
+      </segment>
+    </unit>
+    <unit id="lS4tVo." name="main_keywords.jeans_jackets">
+      <segment>
+        <source>main_keywords.jeans_jackets</source>
+        <target>Джинсы, Куртки</target>
+      </segment>
+    </unit>
+    <unit id="7T1c89a" name="main_page.desc">
+      <segment>
+        <source>main_page.desc</source>
+        <target>Главная страница магазина RankedChoice!</target>
+      </segment>
+    </unit>
+    <unit id="_SzE9f9" name="main.new_collection">
+      <segment>
+        <source>main.new_collection</source>
+        <target>Новая коллекция!</target>
+      </segment>
+    </unit>
+    <unit id="xnGqUu3" name="main.show_me">
+      <segment>
+        <source>main.show_me</source>
+        <target>Паказать</target>
+      </segment>
+    </unit>
+    <unit id="HfA3baC" name="main.discounts_over">
+      <segment>
+        <source>main.discounts_over</source>
+        <target>Скидки более</target>
+      </segment>
+    </unit>
+    <unit id="nXOylpN" name="main.unique">
+      <segment>
+        <source>main.unique</source>
+        <target>Уникальное!</target>
+      </segment>
+    </unit>
+    <unit id="I1dN9Qr" name="main_fashionable">
+      <segment>
+        <source>main_fashionable</source>
+        <target>Модно!</target>
+      </segment>
+    </unit>
+    <unit id="55dobHW" name="main_branded">
+      <segment>
+        <source>main_branded</source>
+        <target>Фирменный!</target>
+      </segment>
+    </unit>
+  </file>
 </xliff>
