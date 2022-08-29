@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="ru">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="ru" trgLang="ru">
   <file id="messages.ru">
     <unit id="KDf2_hy" name="Enter your email">
       <segment>
@@ -534,6 +534,18 @@
       <segment>
         <source>main_branded</source>
         <target>Фирменный!</target>
+      </segment>
+    </unit>
+    <unit id="n4bQgYh" name="test">
+      <segment>
+        <source>test</source>
+        <target>тест</target>
+      </segment>
+    </unit>
+    <unit id="Mug2mpx" name="qty">
+      <segment>
+        <source>qty</source>
+        <target>КОЛ-ВО</target>
       </segment>
     </unit>
   </file>

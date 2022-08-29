@@ -190,7 +190,7 @@
     <unit id="b6eZe4Q" name="add_to_cart">
       <segment>
         <source>add_to_cart</source>
-        <target>add_to_cart</target>
+        <target>add to cart</target>
       </segment>
     </unit>
     <unit id="uYb_8LZ" name="Sneakers">
@@ -500,6 +500,18 @@
       <segment>
         <source>user_signup.heading</source>
         <target>Registration form</target>
+      </segment>
+    </unit>
+    <unit id="Mug2mpx" name="qty">
+      <segment>
+        <source>qty</source>
+        <target>QTY</target>
+      </segment>
+    </unit>
+    <unit id="n4bQgYh" name="test">
+      <segment>
+        <source>test</source>
+        <target>test</target>
       </segment>
     </unit>
   </file>
