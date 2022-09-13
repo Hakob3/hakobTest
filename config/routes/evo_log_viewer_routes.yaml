@@ -1,0 +1,3 @@
+evo_log_viewer:
+  resource: '@EvotodiLogViewerBundle/Resources/config/routes.xml'
+  prefix: '/logs'

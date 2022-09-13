@@ -21,3 +21,7 @@ controllers_main:
 controllers_admin:
     resource: ../src/Controller/Admin
     type: attribute
+
+evo_log_viewer:
+  resource: '@EvotodiLogViewerBundle/Resources/config/routes.xml'
+  prefix: '/logs'

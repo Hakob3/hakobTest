@@ -1,0 +1,133 @@
+{% extends '/admin/layout/layout_main.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/evotodilogviewer/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/evotodilogviewer/css/log-viewer.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/evotodilogviewer/vendor/highlight/styles/darcula.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <span class="font-weight-bold text-primary">Logs</span>
+                </div>
+                <div>
+                    {% if use_level %}
+                        <br>
+                        <div class="form">
+                            <form id="levelFilters">
+                                {% for level in levels %}
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="level" value="{{ level }}">
+                                        {{ level|capitalize }}
+                                    </label>
+                                {% endfor %}
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="card-body">
+                {% if noLog is defined %}
+                <div class="alert col-3 alert-info">
+                    No Log has been generated for today!<br>
+                </div>
+                {% else %}
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="myTable">
+                        <thead>
+                        <tr class="header">
+                            <th class="lvDateTime">DateTime</th>
+                            {% if use_channel %}
+                                <th class="lvChannel">Channel</th>
+                            {% endif %}
+                            {% if use_level %}
+                                <th class="lvLevel">Level</th>
+                            {% endif %}
+                            <th>Message</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for line in log %}
+                            <tr>
+                                <td>
+                                    {% if line.dateTime == false %}Date Parse Error{% else %}{{ line.dateTime|date('Y-m-d H:i:s') }}{% endif %}
+                                </td>
+                                {% if use_channel %}
+                                    <td>
+                                        {{ line.channel }}
+                                    </td>
+                                {% endif %}
+                                {% if use_level %}
+                                    <td class="{{ line.level|lower }}">
+                                        {{ line.level }}
+                                    </td>
+                                {% endif %}
+                                <td>
+                                    <div class="row justify-content-between">
+                                        <div class="col-9 text-wrap">
+                                            <code class="text-danger">{{ line.message }}</code>
+                                        </div>
+                                        <div class="col-2">
+                                            <button type="button" class="btn btn-primary"
+                                                    data-toggle="modal"
+                                                    data-target="#exampleModal{{ line.lineId }}">
+                                                <i class="fas fa-fw fa-info"></i> Excepiton
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <div id="logsModal">
+                                <div class="modal fade" id="exampleModal{{ line.lineId }}" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel{{ line.lineId }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header d-block">
+                                                <h5 class="modal-title"
+                                                    id="exampleModalLabel{{ line.lineId }}">
+                                                    <code class="text-danger  text-wrap" id="modalMessage">
+                                                        <samp>
+                                                            {{ line.message }}
+                                                        </samp>
+                                                    </code>
+                                                </h5>
+                                                {# <button type="button" class="close" data-dismiss="modal" #}
+                                                {# aria-label="Close"> #}
+                                                {# <span aria-hidden="true">&times;</span> #}
+                                                {# </button> #}
+                                            </div>
+                                            <div class="modal-body">
+                                                <code class="text-success" id="modalContext">
+                                                    <samp class="context-json">
+                                                        {{ line.context }}
+                                                    </samp>
+                                                </code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="application/javascript"
+            src="{{ asset('bundles/evotodilogviewer/vendor/highlight/highlight.pack.js') }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
+    <script type="application/javascript" src="{{ asset('assets/log_viewer/js/log_view.js') }}"></script>
+{% endblock %}

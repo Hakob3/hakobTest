@@ -46,8 +46,9 @@ class ResetPasswordController extends AbstractController
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+//        dd($form, $request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
 
             return $this->processSendingPasswordResetEmail(
                 $form->get('email')->getData()
@@ -148,6 +149,8 @@ class ResetPasswordController extends AbstractController
             'email' => $emailFormData,
         ]);
 
+//        dd($user);
+
         // Do not reveal whether a user account was found or not.
         if (!$user) {
             return $this->redirectToRoute('app_check_email');
@@ -166,8 +169,13 @@ class ResetPasswordController extends AbstractController
                 $this->translator->trans($e->getReason(), [], 'ResetPasswordBundle')
             ));
 
+//            dd($this->translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE, [], 'ResetPasswordBundle'),
+//                $this->translator->trans($e->getReason(), [], 'ResetPasswordBundle'));
+
             return $this->redirectToRoute('app_check_email');
         }
+
+//        dd($user->getEmail());
 
         $email = (new TemplatedEmail())
             ->from(new Address('hakobapo3@yandex.ru', 'Hakob'))

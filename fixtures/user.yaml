@@ -1,6 +1,6 @@
 App\Entity\User:
   user_1:
-    email: test_admin_1@gmail.com
+    email: baghdasaryan.hakob@mail.ru
     # password decoded: 123123 | ddd "\" before "$"
     password: '\$2y\$13\$QVl/pFnZVR7eoAZMJhFaFe5SiLA5MSE2A50xpKvEjF09bfXnQgf9W'
     isVerified: 1

@@ -1,0 +1,46 @@
+{% extends '/admin/layout/layout_main.html.twig' %}
+{% block body %}
+    <table class="table table-bordered">
+        <tr>
+            <th colspan="4">
+                <a href="/">Home</a>
+            </th>
+        </tr>
+        <tr>
+            <th>Log Name</th>
+            <th>File Size(bytes)</th>
+            <th>Modification Time</th>
+            <th>Actions</th>
+        </tr>
+        {% for log in logs %}
+            <tr>
+                <td>
+                    {% if log.exists %}
+                        <a href="{{ path('admin_log_view', {'id': log.id}) }}">
+                            {{ log.name }}
+                        </a>
+                    {% else %}
+                        {{ log.name }} not found
+                    {% endif %}
+                </td>
+                <td>
+                    {% if log.exists %}
+                        {{ log.size }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if log.exists %}
+                        {{ log.mtime|date('Y-m-d H:i:s') }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if log.exists %}
+                        <a href="{{ url('_log_viewer_viewer') }}?id={{ log.id }}&delete=true">
+                            delete
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

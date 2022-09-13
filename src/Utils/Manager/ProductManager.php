@@ -22,7 +22,6 @@ class ProductManager extends AbstractBaseManager
     /**
      * @return ObjectRepository
      */
-
     public function getRepository(): ObjectRepository
     {
         return $this->entityManager->getRepository(Product::class);

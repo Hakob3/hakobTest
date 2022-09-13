@@ -1,0 +1,37 @@
+{% extends 'admin/layout/layout_main.html.twig' %}
+
+{% block title_detailed %}All Products{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive table-bordered">
+                <table id="table_id" class="display table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2 Data 1</td>
+                        <td>Row 2 Data 2</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
+{% endblock %}

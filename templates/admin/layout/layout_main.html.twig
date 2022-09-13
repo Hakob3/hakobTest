@@ -4,6 +4,10 @@
     Admin Panel - {% block title_detailed %}{% endblock %} | RankedChoice
 {% endblock %}
 
+{% block stylesheets %}
+
+{% endblock %}
+
 {% block layout_body %}
     <body id="page-top">
     <div id="wrapper">
@@ -21,7 +25,6 @@
                     {% block body %}{% endblock %}
                 </div>
             </div>
-
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -29,15 +32,13 @@
                     </div>
                 </div>
             </footer>
-
         </div>
-
     </div>
-
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    {% block javascripts %}{% endblock %}
     </body>
+{% endblock %}
+{% block javascripts %}
+
 {% endblock %}

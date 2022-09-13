@@ -6,6 +6,6 @@ php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 php bin/console hautelook:fixtures:load -n
 
-php bin/phpunit --testdox --group resetPassword
-vendor/bin/codecept run functional LoginCest
+php bin/phpunit --testdox --group controller
+#vendor/bin/codecept run functional LoginCest
 #php bin/console doctrine:database:drop --force

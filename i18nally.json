@@ -31,13 +31,13 @@
       "scopePattern" : "file[akobTest]:templates//*",
       "filterName" : "trans",
       "argumentsTemplate" : "%map%, '%namespace%'",
-      "inlineTagNames" : [ "a", "abbr", "acronym", "b", "bdi", "bdo", "big", "br", "cite", "code", "data", "del", "dfn", "em", "i", "img", "input", "ins", "kbd", "label", "mark", "meter", "output", "progress", "q", "ruby", "s", "samp", "slot", "small", "span", "strong", "sub", "sup", "time", "u", "tt", "var", "wbr" ],
-      "translatableAttributeNames" : [ "title", "alt", "placeholder", "label", "aria-label" ],
+      "inlineTagNames" : [ "small", "tt", "big", "sub", "img", "strong", "code", "data", "samp", "wbr", "del", "slot", "sup", "br", "output", "abbr", "a", "b", "acronym", "bdi", "meter", "var", "em", "i", "label", "bdo", "kbd", "dfn", "ins", "ruby", "input", "q", "s", "u", "cite", "progress", "time", "mark", "span" ],
+      "translatableAttributeNames" : [ "alt", "placeholder", "label", "title", "aria-label" ],
       "skipDefaultNamespace" : true
     } ]
   } ],
   "ignores" : {
-    "valuesInProject" : [ ],
+    "valuesInProject" : [ "error" ],
     "valuesInFile" : { },
     "filesInProject" : [ ],
     "unignoredFunctionNames" : [ ],
