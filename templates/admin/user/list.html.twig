@@ -18,12 +18,10 @@
                     <tr>
                         <th>Id</th>
                         <th>Email</th>
-                        <th>Roles</th>
-                        <th>Full name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Zipcode</th>
+                        <th>Role</th>
+                        <th>Profile info</th>
                         <th>Is deleted</th>
+                        <th>Is verified email</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -33,17 +31,26 @@
                             <td>{{ user.id }}</td>
                             <td>{{ user.email }}</td>
                             <td>
-                                {% for role in user.roles %}
-                                    {{ role }}
-                                {% endfor %}
+                                {% if "ROLE_ADMIN" in user.roles %}
+                                    <strong>Admin</strong>
+                                {% else %}
+                                    User
+                                {% endif %}
+                                <smal>{{ user.roles|join(', ', ' and') }}</smal>
                             </td>
-                            <td>{{ user.fullName }}</td>
-                            <td>{{ user.phone }}</td>
-                            <td>{{ user.address }}</td>
-                            <td>{{ user.zipcode }}</td>
+                            <td>
+                                Full name: {{ user.fullName }}<br>
+                                Phone: {{ user.phone }}<br>
+                                Address: {{ user.address }}<br>
+                                Zip code: {{ user.zipcode }}
+                            </td>
                             <td>
                                 <i class="fas fa-check fa-sm"
                                    style="color: {% if user.isDeleted %}green{% else %}lightgray{% endif %};"></i>
+                            </td>
+                            <td>
+                                <i class="fas fa-check fa-sm"
+                                   style="color: {% if user.isVerified %}green{% else %}lightgray{% endif %};"></i>
                             </td>
                             <td>
                                 <a href="{{ path('admin_user_edit', {'id': user.id}) }}"

@@ -73,14 +73,13 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
 
-            $user->setRoles($form->get('roles')->getData());
-
             $user->setPassword(
                 $this->userPasswordHasher->hashPassword(
                     $user,
                     $form->get('password')->getData()
                 )
             );
+            $user->setRoles($form->get('roles')->getData());
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
@@ -94,5 +93,10 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+    }
+
+    public function delete()
+    {
+
     }
 }

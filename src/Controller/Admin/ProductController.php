@@ -36,7 +36,7 @@ class ProductController extends AbstractController
     }
 
     #[Route('/add', name: 'add')]
-    public function add(Request $request, ProductFormHandler $productFormHandler)
+    public function add(Request $request, ProductFormHandler $productFormHandler): Response
     {
         $product = new Product();
 

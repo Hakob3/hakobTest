@@ -1,22 +1,22 @@
 {
   "version" : "1.0",
   "profiles" : [ {
-    "id" : "1cfb5eb0-64ea-4a48-bc84-1071e01f0a69",
+    "id" : "0001cb10-b834-4b36-b1ce-593f578bc762",
     "name" : "Symfony (PHP, TWIG)",
     "keyNamingPattern" : "SNAKE_CASE_PATTERN",
     "sink" : {
-      "id" : "7e1d9d06-2e01-4b7e-8d2a-62957c22b063",
+      "id" : "a8287c2e-f103-46b6-bca2-8a0f4d7c25f1",
       "type" : "symfony",
       "translationsDirectory" : "$PROJECT_DIR$/translations",
-      "fileType" : "xliff/xlf",
-      "defaultLocale" : "ru",
+      "fileType" : "xliff_v2",
+      "defaultLocale" : "en",
       "namespaces" : [ "messages", "security", "validators" ],
       "outputFilenameTemplate" : "%namespace%.%locale%.xlf",
       "nestingType" : "DISABLED",
       "placeholderFormatterName" : "SYMFONY_REPLACEMENT"
     },
     "sources" : [ {
-      "id" : "d6b391ee-7d86-4535-92ad-1919336f773f",
+      "id" : "27ff8bab-7404-4480-854f-808db110b28e",
       "type" : "php",
       "scopeName" : "i18n Ally: Symfony/PHP source",
       "scopePattern" : "file[akobTest]:src//*&&!file[akobTest]:src/DataFixtures//*",
@@ -25,19 +25,19 @@
       "skipDefaultNamespace" : true,
       "sprintfMode" : false
     }, {
-      "id" : "c9e85370-0bff-4dc0-a77c-8c808a52f40c",
+      "id" : "112c2f76-a60c-40e5-9e8a-d17b1a27f4c6",
       "type" : "twig",
       "scopeName" : "i18n Ally: Symfony/Twig templates",
       "scopePattern" : "file[akobTest]:templates//*",
       "filterName" : "trans",
       "argumentsTemplate" : "%map%, '%namespace%'",
-      "inlineTagNames" : [ "small", "tt", "big", "sub", "img", "strong", "code", "data", "samp", "wbr", "del", "slot", "sup", "br", "output", "abbr", "a", "b", "acronym", "bdi", "meter", "var", "em", "i", "label", "bdo", "kbd", "dfn", "ins", "ruby", "input", "q", "s", "u", "cite", "progress", "time", "mark", "span" ],
-      "translatableAttributeNames" : [ "alt", "placeholder", "label", "title", "aria-label" ],
+      "inlineTagNames" : [ "a", "abbr", "acronym", "b", "bdi", "bdo", "big", "br", "cite", "code", "data", "del", "dfn", "em", "i", "img", "input", "ins", "kbd", "label", "mark", "meter", "output", "progress", "q", "ruby", "s", "samp", "slot", "small", "span", "strong", "sub", "sup", "time", "u", "tt", "var", "wbr" ],
+      "translatableAttributeNames" : [ "title", "alt", "placeholder", "label", "aria-label" ],
       "skipDefaultNamespace" : true
     } ]
   } ],
   "ignores" : {
-    "valuesInProject" : [ "error" ],
+    "valuesInProject" : [ ],
     "valuesInFile" : { },
     "filesInProject" : [ ],
     "unignoredFunctionNames" : [ ],

@@ -32,7 +32,7 @@ class EditUserFormType extends AbstractType
             ])
 //            ->add('roles')
             ->add('password', PasswordType::class, [
-                'label' => 'Password',
+                'label' => 'New Password',
                 'required' => true,
                 'attr' => [
                     'class' => 'form-control'

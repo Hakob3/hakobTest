@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/evotodilogviewer/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/evotodilogviewer/css/log-viewer.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/evotodilogviewer/vendor/highlight/styles/darcula.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/log_viewer/css/log_view.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -30,17 +31,15 @@
                     {% endif %}
                 </div>
             </div>
-
         </div>
-        <div class="row">
-            <div class="card-body">
-                {% if noLog is defined %}
+        <div class="card-body">
+            {% if noLog is defined %}
                 <div class="alert col-3 alert-info">
                     No Log has been generated for today!<br>
                 </div>
-                {% else %}
+            {% else %}
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="myTable">
+                    <table class="table table-bordered table-responsive hover stripe order-column" id="logsTable">
                         <thead>
                         <tr class="header">
                             <th class="lvDateTime">DateTime</th>
@@ -53,72 +52,32 @@
                             <th>Message</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        {% for line in log %}
-                            <tr>
-                                <td>
-                                    {% if line.dateTime == false %}Date Parse Error{% else %}{{ line.dateTime|date('Y-m-d H:i:s') }}{% endif %}
-                                </td>
-                                {% if use_channel %}
-                                    <td>
-                                        {{ line.channel }}
-                                    </td>
-                                {% endif %}
-                                {% if use_level %}
-                                    <td class="{{ line.level|lower }}">
-                                        {{ line.level }}
-                                    </td>
-                                {% endif %}
-                                <td>
-                                    <div class="row justify-content-between">
-                                        <div class="col-9 text-wrap">
-                                            <code class="text-danger">{{ line.message }}</code>
-                                        </div>
-                                        <div class="col-2">
-                                            <button type="button" class="btn btn-primary"
-                                                    data-toggle="modal"
-                                                    data-target="#exampleModal{{ line.lineId }}">
-                                                <i class="fas fa-fw fa-info"></i> Excepiton
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <div id="logsModal">
-                                <div class="modal fade" id="exampleModal{{ line.lineId }}" tabindex="-1" role="dialog"
-                                     aria-labelledby="exampleModalLabel{{ line.lineId }}" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header d-block">
-                                                <h5 class="modal-title"
-                                                    id="exampleModalLabel{{ line.lineId }}">
-                                                    <code class="text-danger  text-wrap" id="modalMessage">
-                                                        <samp>
-                                                            {{ line.message }}
-                                                        </samp>
-                                                    </code>
-                                                </h5>
-                                                {# <button type="button" class="close" data-dismiss="modal" #}
-                                                {# aria-label="Close"> #}
-                                                {# <span aria-hidden="true">&times;</span> #}
-                                                {# </button> #}
-                                            </div>
-                                            <div class="modal-body">
-                                                <code class="text-success" id="modalContext">
-                                                    <samp class="context-json">
-                                                        {{ line.context }}
-                                                    </samp>
-                                                </code>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
-            </div>
+                <div id="logsModal">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content p-3">
+                                <div class="modal-header d-block">
+                                    <h5 class="modal-title"
+                                        id="exampleModalLabel">
+                                        <code class="text-primary text-wrap" id="modalMessage">
+                                        </code>
+                                    </h5>
+                                    {# <button type="button" class="close" data-dismiss="modal" #}
+                                    {# aria-label="Close"> #}
+                                    {# <span aria-hidden="true">&times;</span> #}
+                                    {# </button> #}
+                                </div>
+                                <div class="bg-gray-100 modal-body">
+                                    <code class="pre-wrap text-success" id="modalContext"></code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endif %}
         </div>
     </div>
