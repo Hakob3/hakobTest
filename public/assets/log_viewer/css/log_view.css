@@ -1,0 +1,15 @@
+.pre-wrap {
+    white-space: pre-wrap;
+}
+
+.key{
+    color: #204a87;
+}
+
+.value{
+    color: #4e9a06;
+}
+
+.text-danger{
+    color: #b0413e !important;
+}

@@ -24,7 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     /**
-     * @var string The hashed password
+     * @var string|null The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
@@ -54,22 +54,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Order::class)]
     private Collection $orders;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->isDeleted = false;
         $this->orders = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return $this
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -95,6 +108,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return $this
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -111,11 +128,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return bool
+     */
     public function isVerified(): bool
     {
         return $this->isVerified;
     }
 
+    /**
+     * @param bool $isVerified
+     * @return $this
+     */
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
@@ -123,11 +147,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getFullName(): ?string
     {
         return $this->fullName;
     }
 
+    /**
+     * @param string|null $fullName
+     * @return $this
+     */
     public function setFullName(?string $fullName): self
     {
         $this->fullName = $fullName;
@@ -135,11 +166,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPhone(): ?string
     {
         return $this->phone;
     }
 
+    /**
+     * @param string|null $phone
+     * @return $this
+     */
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
@@ -147,11 +185,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAddress(): ?string
     {
         return $this->address;
     }
 
+    /**
+     * @param string|null $address
+     * @return $this
+     */
     public function setAddress(?string $address): self
     {
         $this->address = $address;
@@ -159,11 +204,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getZipcode(): ?string
     {
         return $this->zipcode;
     }
 
+    /**
+     * @param string|null $zipcode
+     * @return $this
+     */
     public function setZipcode(?string $zipcode): self
     {
         $this->zipcode = $zipcode;
@@ -171,11 +223,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function isIsDeleted(): ?bool
     {
         return $this->isDeleted;
     }
 
+    /**
+     * @param bool|null $isDeleted
+     * @return $this
+     */
     public function setIsDeleted(?bool $isDeleted): self
     {
         $this->isDeleted = $isDeleted;
@@ -206,8 +265,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
-    public function getApiRole()
+    /**
+     * @return string|null
+     */
+    public function getApiRole(): ?string
     {
         return $this->roles->getDisplayName();
     }
@@ -220,6 +281,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->orders;
     }
 
+    /**
+     * @param Order $order
+     * @return $this
+     */
     public function addOrder(Order $order): self
     {
         if (!$this->orders->contains($order)) {
@@ -230,6 +295,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @param Order $order
+     * @return $this
+     */
     public function removeOrder(Order $order): self
     {
         if ($this->orders->removeElement($order)) {

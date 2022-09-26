@@ -13,33 +13,40 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * Class EditUserFormType
+ * @package App\Form\Admin
+ */
 class EditUserFormType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'Email',
-                'required' => true,
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'constraints' => [
-                    new NotBlank([], 'Should be filled')
+                    new NotBlank([], 'Заполните поле'),
+                    new Email([], 'Введите валидный Е-mail'),
                 ]
             ])
-//            ->add('roles')
-            ->add('password', PasswordType::class, [
+            ->add('plainPassword', PasswordType::class, [
                 'label' => 'New Password',
-                'required' => true,
+                'mapped' =>false,
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'constraints' => [
-                    new NotBlank([], 'Should be filled')
-                ]
             ])
             ->add('roles', EntityType::class, [
                 'label' => 'Role',
@@ -47,6 +54,7 @@ class EditUserFormType extends AbstractType
                 'mapped' => false,
                 'choice_label' => 'displayName',
                 'attr' => [
+                    'autocomplete' => 'roles',
                     'class' => 'form-control'
                 ],
             ])
@@ -100,6 +108,9 @@ class EditUserFormType extends AbstractType
             ]);
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

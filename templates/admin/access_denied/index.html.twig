@@ -1,0 +1,33 @@
+{% extends 'admin/layout/layout_empty_page.html.twig' %}
+
+{% block title %}Отказано в доступе!{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+
+        <div class="col-xl-5 col-lg-6 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-6">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-10 error-content text-center">
+                                <h3><i class="fas fa-exclamation-triangle text-warning"></i> Отказано в доступе!</h3>
+
+                                <p>
+                                    К сожалению вы не можете попасть на эту страницу.
+                                    Но вы можете <a href="{{ path('main_homepage') }}">вернуться на главную</a>.
+                                    Или <a href="{{ path('admin_security_logout') }}">выйти из аккаунта</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.error-content -->
+{% endblock %}
