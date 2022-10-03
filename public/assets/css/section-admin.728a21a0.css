@@ -6062,8 +6062,8 @@
     font-family: Font Awesome\ 5 Brands;
     font-style: normal;
     font-weight: 400;
-    src: url(/public/build/fonts/fa-brands-400.89a52ae1.eot);
-    src: url(/public/build/fonts/fa-brands-400.89a52ae1.eot) format("embedded-opentype"), url(/public/build/fonts/fa-brands-400.c1210e5e.woff2) format("woff2"), url(/public/build/fonts/fa-brands-400.329a95a9.woff) format("woff"), url(/public/build/fonts/fa-brands-400.9e138496.ttf) format("truetype"), url(/public/build/images/fa-brands-400.216edb96.svg) format("svg")
+    src: url(/public/assets/fonts/fa-brands-400.89a52ae1.eot);
+    src: url(/public/assets/fonts/fa-brands-400.89a52ae1.eot) format("embedded-opentype"), url(/public/assets/fonts/fa-brands-400.c1210e5e.woff2) format("woff2"), url(/public/assets/fonts/fa-brands-400.329a95a9.woff) format("woff"), url(/public/assets/fonts/fa-brands-400.9e138496.ttf) format("truetype"), url(/public/assets/images/fa-brands-400.216edb96.svg) format("svg")
 }
 
 .fab {
@@ -6075,8 +6075,8 @@
     font-family: Font Awesome\ 5 Free;
     font-style: normal;
     font-weight: 400;
-    src: url(/public/build/fonts/fa-regular-400.4079ae2d.eot);
-    src: url(/public/build/fonts/fa-regular-400.4079ae2d.eot) format("embedded-opentype"), url(/public/build/fonts/fa-regular-400.68c5af1f.woff2) format("woff2"), url(/public/build/fonts/fa-regular-400.36722648.woff) format("woff"), url(/public/build/fonts/fa-regular-400.1017bce8.ttf) format("truetype"), url(/public/build/images/fa-regular-400.19e27d34.svg) format("svg")
+    src: url(/public/assets/fonts/fa-regular-400.4079ae2d.eot);
+    src: url(/public/assets/fonts/fa-regular-400.4079ae2d.eot) format("embedded-opentype"), url(/public/assets/fonts/fa-regular-400.68c5af1f.woff2) format("woff2"), url(/public/assets/fonts/fa-regular-400.36722648.woff) format("woff"), url(/public/assets/fonts/fa-regular-400.1017bce8.ttf) format("truetype"), url(/public/assets/images/fa-regular-400.19e27d34.svg) format("svg")
 }
 
 .fab, .far {
@@ -6088,8 +6088,8 @@
     font-family: Font Awesome\ 5 Free;
     font-style: normal;
     font-weight: 900;
-    src: url(/public/build/fonts/fa-solid-900.efbd5d20.eot);
-    src: url(/public/build/fonts/fa-solid-900.efbd5d20.eot) format("embedded-opentype"), url(/public/build/fonts/fa-solid-900.ada6e6df.woff2) format("woff2"), url(/public/build/fonts/fa-solid-900.c6ec0800.woff) format("woff"), url(/public/build/fonts/fa-solid-900.07c3313b.ttf) format("truetype"), url(/public/build/images/fa-solid-900.13de59f1.svg) format("svg")
+    src: url(/public/assets/fonts/fa-solid-900.efbd5d20.eot);
+    src: url(/public/assets/fonts/fa-solid-900.efbd5d20.eot) format("embedded-opentype"), url(/public/assets/fonts/fa-solid-900.ada6e6df.woff2) format("woff2"), url(/public/assets/fonts/fa-solid-900.c6ec0800.woff) format("woff"), url(/public/assets/fonts/fa-solid-900.07c3313b.ttf) format("truetype"), url(/public/assets/images/fa-solid-900.13de59f1.svg) format("svg")
 }
 
 .fa, .far, .fas {
