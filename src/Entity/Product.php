@@ -2,36 +2,84 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
 use App\Repository\ProductRepository;
+use ApiPlatform\Metadata\ApiResource;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Uid\Uuid;
+use ApiPlatform\Metadata\ApiProperty;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Uid\UuidV4;
+use ApiPlatform\Metadata\ApiFilter;
 
+#[ApiResource(
+    operations: [
+    new Get(
+        normalizationContext: ['groups' => 'product:item'],
+    ),
+    new GetCollection(
+        normalizationContext: ['groups' => 'product:list'],
+    ),
+    new Post(
+        normalizationContext: ['groups' => 'product:list:write'],
+        security: "is_granted('ROLE_ADMIN')",
+    ),
+    new Patch(
+        normalizationContext: ['groups' => 'product:item:write'],
+        security: "is_granted('ROLE_ADMIN')",
+    )
+],
+    formats: ['json', 'jsonld'],
+    order: [
+    'id' => 'DESC'
+],
+    paginationClientEnabled: true,
+    paginationClientItemsPerPage: true
+)]
+#[ApiFilter(BooleanFilter::class, properties: ['isPublished'])]
+#[ApiFilter(SearchFilter::class, properties: [
+    'category' => 'exact'
+])]
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[ApiProperty(identifier: false)]
+    #[Groups(['product:list', 'product:item'])]
     private ?int $id = null;
 
     #[ORM\Column(type: 'uuid')]
-    private $uuid;
+    #[ApiProperty(identifier: true)]
+    #[Groups(['product:list', 'product:item'])]
+    private UuidV4 $uuid;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['product:list', 'product:list:write', 'product:item', 'product:item:write'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    #[Groups(['product:list', 'product:list:write', 'product:item', 'product:item:write'])]
     private ?string $price = null;
 
     #[ORM\Column]
+    #[Groups(['product:list', 'product:list:write', 'product:item', 'product:item:write'])]
     private ?int $quantity = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createdAt = null;
+    private ?DateTimeInterface $createdAt = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
@@ -50,6 +98,7 @@ class Product
     private ?string $slug = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
+    #[Groups(['product:list', 'product:list:write', 'product:item', 'product:item:write'])]
     private ?Category $category = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: CartProduct::class, orphanRemoval: true)]
@@ -58,10 +107,13 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: OrderProduct::class)]
     private Collection $orderProducts;
 
+    /**
+     * Product constructor.
+     */
     public function __construct()
     {
         $this->uuid = Uuid::v4();
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
         $this->isPublished = false;
         $this->isDeleted = false;
         $this->productImages = new ArrayCollection();
@@ -69,21 +121,34 @@ class Product
         $this->orderProducts = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle(string $title): self
     {
         $this->title = $title;
@@ -91,11 +156,18 @@ class Product
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPrice(): ?string
     {
         return $this->price;
     }
 
+    /**
+     * @param string $price
+     * @return $this
+     */
     public function setPrice(string $price): self
     {
         $this->price = $price;
@@ -103,11 +175,18 @@ class Product
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
+    /**
+     * @param int $quantity
+     * @return $this
+     */
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
@@ -115,23 +194,37 @@ class Product
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    /**
+     * @param DateTimeInterface $createdAt
+     * @return $this
+     */
+    public function setCreatedAt(DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * @param string|null $description
+     * @return $this
+     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -139,11 +232,18 @@ class Product
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function isIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
+    /**
+     * @param bool $isPublished
+     * @return $this
+     */
     public function setIsPublished(bool $isPublished): self
     {
         $this->isPublished = $isPublished;
@@ -151,11 +251,18 @@ class Product
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function isIsDeleted(): ?bool
     {
         return $this->isDeleted;
     }
 
+    /**
+     * @param bool $isDeleted
+     * @return $this
+     */
     public function setIsDeleted(bool $isDeleted): self
     {
         $this->isDeleted = $isDeleted;
@@ -171,6 +278,10 @@ class Product
         return $this->productImages;
     }
 
+    /**
+     * @param ProductImage $productImage
+     * @return $this
+     */
     public function addProductImage(ProductImage $productImage): self
     {
         if (!$this->productImages->contains($productImage)) {
@@ -181,6 +292,10 @@ class Product
         return $this;
     }
 
+    /**
+     * @param ProductImage $productImage
+     * @return $this
+     */
     public function removeProductImage(ProductImage $productImage): self
     {
         if ($this->productImages->removeElement($productImage)) {
@@ -193,11 +308,18 @@ class Product
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
+    /**
+     * @param string|null $slug
+     * @return $this
+     */
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
@@ -205,11 +327,18 @@ class Product
         return $this;
     }
 
+    /**
+     * @return Category|null
+     */
     public function getCategory(): ?Category
     {
         return $this->category;
     }
 
+    /**
+     * @param Category|null $category
+     * @return $this
+     */
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
@@ -225,6 +354,10 @@ class Product
         return $this->cartProducts;
     }
 
+    /**
+     * @param CartProduct $cartProduct
+     * @return $this
+     */
     public function addCartProduct(CartProduct $cartProduct): self
     {
         if (!$this->cartProducts->contains($cartProduct)) {
@@ -235,6 +368,10 @@ class Product
         return $this;
     }
 
+    /**
+     * @param CartProduct $cartProduct
+     * @return $this
+     */
     public function removeCartProduct(CartProduct $cartProduct): self
     {
         if ($this->cartProducts->removeElement($cartProduct)) {
@@ -265,6 +402,10 @@ class Product
         return $this;
     }
 
+    /**
+     * @param OrderProduct $orderProduct
+     * @return $this
+     */
     public function removeOrderProduct(OrderProduct $orderProduct): self
     {
         if ($this->orderProducts->removeElement($orderProduct)) {

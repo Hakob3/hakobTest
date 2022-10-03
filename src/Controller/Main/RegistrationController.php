@@ -2,7 +2,6 @@
 
 namespace App\Controller\Main;
 
-use App\Entity\Roles;
 use App\Entity\User;
 use App\Form\Main\RegistrationFormType;
 use App\Repository\RolesRepository;
@@ -14,21 +13,34 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
-use Symfony\Component\Mime\Message;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
+/**
+ * Class RegistrationController
+ * @package App\Controller\Main
+ */
 class RegistrationController extends AbstractController
 {
+    /** @var EmailVerifier  */
     private EmailVerifier $emailVerifier;
+
+    /** @var VerifyEmailHelperInterface  */
     private VerifyEmailHelperInterface $verifyEmailHelper;
+
+    /** @var RolesRepository  */
     private RolesRepository $rolesRepository;
 
+    /**
+     * RegistrationController constructor.
+     * @param EmailVerifier $emailVerifier
+     * @param VerifyEmailHelperInterface $verifyEmailHelper
+     * @param RolesRepository $rolesRepository
+     */
     public function __construct(EmailVerifier $emailVerifier, VerifyEmailHelperInterface $verifyEmailHelper, RolesRepository $rolesRepository)
     {
         $this->emailVerifier = $emailVerifier;
@@ -55,8 +67,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setRoles($this->rolesRepository->find(2));
-            // encode the plain password
+            $user->setRoles($this->rolesRepository->findOneBy(['name' => 'ROLE_USER']));
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -67,7 +78,6 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('hakobapo3@yandex.ru', 'Hakob'))
@@ -75,7 +85,6 @@ class RegistrationController extends AbstractController
                     ->subject('Email verification')
                     ->htmlTemplate('main/email/security/confirmation_email.html.twig')
             );
-//            // do anything else you need here, like send an email
             $this->addFlash('success', 'An email has been sent. Please check your inbox to complete registration.');
             return $this->redirectToRoute('main_homepage');
         }
@@ -85,6 +94,12 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param TranslatorInterface $translator
+     * @param UserRepository $userRepository
+     * @return Response
+     */
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response
     {
@@ -100,7 +115,6 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('main_registration');
         }
 
-        // validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request->getUri(), $user);
         } catch (VerifyEmailExceptionInterface $exception) {
@@ -108,8 +122,6 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('main_homepage');
         }
-
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
 
         $this->addFlash('success', 'Your email address has been verified.');
 

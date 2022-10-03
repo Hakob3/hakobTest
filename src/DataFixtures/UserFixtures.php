@@ -41,7 +41,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $user->setEmail('test@mail.com');
         $user->setRoles($this->rolesRepository->findOneBy(['name' => 'ROLE_ADMIN']));
         $user->setPassword($this->userPasswordHasher->hashPassword(
-            $user, 'password'));
+            $user, '111111'));
         $user->setIsVerified(true);
         $user->setFullName('Test Admin');
         $user->setAddress('test address');
