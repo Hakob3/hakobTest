@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.fn.dataTable.ext.search.push(
-        function (settings, searchData, index, rowData, counter) {
+        function (settings, searchData) {
             var levels = $('input:checkbox[name="level"]:checked').map(function () {
                 return this.value;
             }).get();
@@ -9,10 +9,7 @@ $(document).ready(function () {
                 return true;
             }
 
-            if (levels.indexOf(searchData[2]) !== -1) {
-                return true;
-            }
-            return false;
+            return levels.indexOf(searchData[2]) !== -1;
         }
     );
 
@@ -26,13 +23,13 @@ $(document).ready(function () {
             {data: 'channel'},
             {
                 data: 'level',
-                render: function (data, type, row) {
+                render: function (data) {
                     return '<div class="' + data.toLowerCase() + ' d-inline-block rounded shadow-sm p-3 text-center w-100">' + data + '</div>'
                 },
             },
             {
                 data: 'message',
-                render: function (data, type, row) {
+                render: function (data) {
                     return '<div class="row h-100 mw-100 justify-content-between">\n' +
                         '<div class="col-9 text-wrap">\n' +
                         '<code class="text-danger">' + data + '</code>\n' +
@@ -76,7 +73,7 @@ $(document).ready(function () {
             }
             return '<span class="' + cls + '">' + match + '</span>';
         });
-    };
+    }
 
     $('#logsTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
