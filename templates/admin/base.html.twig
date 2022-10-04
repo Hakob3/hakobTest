@@ -7,18 +7,16 @@
     <title>{% block title %}Admin Panel - RankedChoice{% endblock %}</title>
     <meta name="keywords" content="{% block page_keywords %}clothes, jackets, jeans{% endblock %}">
     <meta name="description" content="{% block page_description %}clothes, jackets, jeans{% endblock %}">
-    <script src="https://kit.fontawesome.com/fc07c693df.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.ico') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/section-admin.728a21a0.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.2.1/dt-1.10.16/datatables.min.css"/>
-{#     <link rel="stylesheet" href="{{ asset('/build/fontawesome-free/css/fontawesome.min.css') }}"> #}
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/dt/jq-3.2.1/dt-1.10.16/datatables.min.css"/>
+    {{ encore_entry_link_tags('section-admin') }}
     {% block stylesheets %}{% endblock %}
 </head>
-
 {% block layout_body %}{% endblock %}
 
-{{ encore_entry_script_tags('app') }}
-<script src="{{ asset('assets/js/section-admin.e07769c5.js') }}"></script>
+{{ encore_entry_script_tags('section-admin') }}
+
 {% block javascripts %}
 {% endblock %}
 </html>
