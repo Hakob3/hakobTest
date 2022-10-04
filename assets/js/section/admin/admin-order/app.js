@@ -1,13 +1,20 @@
-// import Vue from "vue";
 import { createApp } from "vue";
 import App from "./App";
+import components from './components/UI';
+import router from "./router/router";
+import directives from "./directives";
 import store from "./store";
-
-// new Vue({
-//     el: "#app",
-//     render: h => h(App)
-// })
-
 const app = createApp(App);
-app.mount('#app');
-// app.use(store);
+
+components.forEach(component => {
+    app.component(component.name, component);
+});
+
+directives.forEach(directive => {
+    app.directive(directive.name, directive);
+})
+
+app
+    .use(router)
+    .use(store)
+    .mount('#app');

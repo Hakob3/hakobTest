@@ -1,23 +1,17 @@
 <template>
-  <div>
-    vue app {{ testProperty }}
+  <div class="app">
+    <navbar></navbar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-
+import Navbar from "./components/UI/Navbar";
 export default {
-  computed: {
-    // ...mapState("products", ["testProperty"]),
-    productsCount: () => {
-      return 123;
-    }
-  },
-
+  components: {Navbar}
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -1,15 +1,13 @@
-import Vue from "vue";
-import { createApp } from "vue";
-import { createStore } from "vuex";
-import products from "./modules/products";
+import {createStore} from "vuex";
+import {productModules} from "./productModules";
 
-const store = createStore({
-    modules: {
-        products
+export default createStore({
+    state: () => {
+        return {
+            isAuth: false
+        }
     },
-    strict: debug
+    modules: {
+        products: productModules
+    }
 });
-
-const debug = process.env.NODE_ENV !== "production";
-
-export default store;

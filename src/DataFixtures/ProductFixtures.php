@@ -19,10 +19,10 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $newProduct = new Product();
-            $newProduct->setTitle('test product');
-            $newProduct->setPrice('555');
+            $newProduct->setTitle('test product' . uniqid());
+            $newProduct->setPrice(rand(55, 7899));
             $newProduct->setDescription('test');
             $newProduct->setQuantity(rand(2, 50));
             $newProduct->setIsPublished(true);
