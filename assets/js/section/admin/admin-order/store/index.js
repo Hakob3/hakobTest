@@ -1,4 +1,3 @@
-import Vue from "vue";
 import { createApp } from "vue";
 import { createStore } from "vuex";
 import products from "./modules/products";

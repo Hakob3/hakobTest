@@ -3,11 +3,7 @@ import { createApp } from "vue";
 import App from "./App";
 import store from "./store";
 
-// new Vue({
-//     el: "#app",
-//     render: h => h(App)
-// })
-
 const app = createApp(App);
+
+app.use(store);
 app.mount('#app');
-// app.use(store);
