@@ -25,7 +25,7 @@
       </button>
       <button
           type="button"
-          class="btn btn-outline-success"
+          class="btn btn-outline-danger"
           @click="remove"
       >
         Remove
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "OrderProductItem",
@@ -65,12 +65,15 @@ export default {
     }),
   },
   methods: {
+    ...mapActions({
+      removeOrderProduct: "products/removeOrderProduct"
+    }),
     viewDetails() {
       const url = '/admin/product/edit/' + this.orderProduct.product.id;
       window.open(url, '_blank').focus();
     },
     remove() {
-
+      this.removeOrderProduct(this.orderProduct.id);
     }
   }
 }
