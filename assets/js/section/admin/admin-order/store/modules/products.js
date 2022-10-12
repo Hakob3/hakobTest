@@ -1,24 +1,14 @@
-const state = () => ({
-    categories: [],
-    testProperty: 'test - test'
-});
-
-const getters = {
-
-};
-
-const actions = {
-
-};
-
-const mutation = {
-
-};
-
-export default {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutation
+export const products = {
+    state: () => {
+        return {
+            categories: [],
+            staticStore: {
+                orderProducts: window.staticStore.orderProducts,
+            }
+        }
+    },
+    getters: {},
+    actions: {},
+    mutation: {},
+    namespaced: true
 }
