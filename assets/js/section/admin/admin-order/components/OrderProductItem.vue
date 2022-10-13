@@ -1,21 +1,21 @@
 <template>
-  <div class="row justify-content-around align-items-center mb-1">
-    <div class="col-mb-1 text-center">
+  <div class="orderProducts row md-1">
+    <div class="col-md-1 text-center">
       {{ rowNumber }}
     </div>
-    <div class="col-mb-2">
-      {{ productTitle }}
+    <div class="col-md-2">
+      {{ orderProduct.product.id }}: {{ productTitle }}
     </div>
-    <div class="col-mb-2">
+    <div class="col-md-2">
       {{ categoryTitle }}
     </div>
-    <div class="col-mb-2">
+    <div class="col-md-2">
       {{ orderProduct.quantity }}
     </div>
-    <div class="col-mb-2">
+    <div class="col-md-2">
       ${{ orderProduct.pricePerOne }}
     </div>
-    <div class="col-mb-3">
+    <div class="col-md-3">
       <button
           type="button"
           class="btn btn-outline-info"

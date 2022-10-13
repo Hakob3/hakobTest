@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\OrderProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,6 +24,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new GetCollection(
             normalizationContext: ['groups' => 'orderProduct:list'],
         ),
+        new Post(
+            normalizationContext: ['groups' => 'orderProduct:list:write'],
+            security: "is_granted('ROLE_ADMIN')",
+        ),
         new Delete(
             security: "is_granted('ROLE_ADMIN')",
         )
@@ -34,7 +39,7 @@ class OrderProduct
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['orderProduct:list', 'orderProduct:item'])]
+    #[Groups(['orderProduct:list', 'orderProduct:item', 'order:item'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'orderProducts')]
@@ -43,14 +48,15 @@ class OrderProduct
 
     #[ORM\ManyToOne(inversedBy: 'orderProducts')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['order:item'])]
     private ?Product $product = null;
 
     #[ORM\Column]
-    #[Groups(['orderProduct:list', 'orderProduct:item'])]
+    #[Groups(['orderProduct:list', 'orderProduct:item', 'order:item'])]
     private ?int $quantity = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
-    #[Groups(['orderProduct:list', 'orderProduct:item'])]
+    #[Groups(['orderProduct:list', 'orderProduct:item', 'order:item'])]
     private ?string $pricePerOne = null;
 
     /**
