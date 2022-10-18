@@ -82,14 +82,6 @@
                     <div id="app"></div>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-md-1">
-                    Total price:
-                </div>
-                <div class="col-md-11 pl-5">
-                    {{ order.totalPrice|format_currency('USD') }}
-                </div>
-            </div>
             <hr/>
             {% include 'admin/_embed/_card/_form_buttons.html.twig' with {
                 'entity': order,
