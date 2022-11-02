@@ -7,13 +7,16 @@
               :href="urlShowProduct"
               target="_blank"
           >
-            <img :src="getUrlProductImage(productImage)"
-                 :alt="cartProduct.product.title">
+            <img
+                :src="getUrlProductImage(productImage)"
+                :alt="cartProduct.product.title">
           </a>
         </figure>
         <div class="product-title">
           <a
-              :href="urlShowProduct">
+              :href="urlShowProduct"
+              target="_blank"
+          >
             {{ cartProduct.product.title }}
           </a>
         </div>
@@ -30,6 +33,7 @@
           min="1"
           step="1"
           data-decimal="0"
+          @focusout="updateQuantity(cartProduct.id, quantity)"
       >
     </td>
     <td class="total-col">
@@ -64,6 +68,9 @@ export default {
       }
     },
   },
+  created() {
+    this.quantity = this.cartProduct.quantity;
+  },
   computed: {
     ...mapState({
       staticStore: state => state.cart.staticStore,
@@ -83,6 +90,7 @@ export default {
   methods: {
     ...mapActions({
       removeCartProduct: "cart/removeCartProduct",
+      updateCartProductQuantity: "cart/updateCartProductQuantity",
     }),
     getUrlProductImage(productImage) {
 
@@ -91,6 +99,14 @@ export default {
           this.cartProduct.product.id +
           "/" +
           productImage.filename);
+    },
+    updateQuantity() {
+      const payload = {
+        cartProductId: this.cartProduct.id,
+        quantity: this.quantity
+      }
+
+      this.updateCartProductQuantity(payload)
     }
   }
 }
